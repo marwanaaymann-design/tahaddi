@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&family=Lalezar&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>تحدي الكورة</title>
+<title>مارو جيم</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;font-family:Tahoma,Arial,sans-serif;color:#fff;min-height:100vh;
@@ -50,7 +50,7 @@ input,select{font:inherit;padding:12px;border-radius:12px;border:0;width:100%;ma
 .splash{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#000d;animation:in .2s}
 .splash span{font-size:110px;animation:zoom .6s both}.splash h1{font-size:46px}
 .hint{background:#ffffff22;border-radius:12px;padding:10px;margin:6px 0;font-size:19px;animation:zoom .4s both}
-.conf{position:fixed;top:-20px;width:10px;height:16px;z-index:60;animation:fall 2.4s linear forwards;pointer-events:none}
+.conf{position:fixed;top:-20px;width:10px;height:16px;z-index:40;animation:fall 2.4s linear forwards;pointer-events:none}
 #mute{position:fixed;top:8px;left:8px;width:auto;padding:6px 12px;z-index:70;font-size:18px;margin:0}
 .combo{text-align:center;font-size:22px;color:#ffd54a;animation:glow 1s infinite;min-height:30px}
 .hostlabel{background:#ffd54a;color:#222;border-radius:10px;padding:4px 10px;font-size:13px;font-weight:bold;width:max-content;margin:0 auto 6px}
@@ -77,7 +77,159 @@ button.t0,button.t1{box-shadow:0 5px 0 #0006}
 body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 20% 0,#2a52c455,transparent 50%),radial-gradient(circle at 90% 100%,#8e24aa55,transparent 45%)}
 button{transition:transform .12s,filter .12s}button:active{transform:scale(.96)}button:hover{filter:brightness(1.12)}
 .card{backdrop-filter:blur(4px);animation:cin .35s both}@keyframes cin{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
-</style></head><body><button id="mute" class="sec">🔊</button><div id="app"></div>
+
+.rb,.t10,.sh{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rc{background:#0007;border-radius:14px;padding:8px;position:relative;animation:cin .4s both}.rc>b{display:block;margin:0 0 6px;padding-inline-end:38px;font-size:15px}
+.rc>button{position:absolute;top:6px;left:6px;width:34px;height:30px;padding:0;margin:0}
+.rs{display:grid;grid-template-columns:1fr 1fr;gap:5px}.rs button{margin:0;padding:9px 0;font-size:17px}
+.t10 button,.sh button{margin:2px 0;padding:9px 3px;font-size:13px}
+.crash{animation:crash .7s}@keyframes crash{0%{transform:translateX(-60px) scale(1.3)}50%{transform:translateX(0) scale(.7);filter:brightness(3)}100%{transform:none}}
+.hit{animation:cin .5s both}
+
+#cbtn{position:fixed;bottom:16px;left:14px;z-index:70;width:58px;height:58px;border-radius:50%;font-size:26px;padding:0;margin:0;background:linear-gradient(180deg,#3aa8ff,#1565c0);box-shadow:0 6px 18px #000a}
+#cbtn i{position:absolute;top:-4px;right:-4px;background:#e53935;color:#fff;border-radius:10px;font-size:12px;padding:2px 7px;font-style:normal}
+.cdr{position:fixed;left:0;right:0;bottom:0;max-height:50vh;background:#08122bf5;border-top:2px solid #ffd54a;z-index:69;padding:12px 12px 80px;display:none;border-radius:20px 20px 0 0;flex-direction:column}
+.cdr.open{display:flex}.clines{overflow:auto;max-height:28vh;margin-bottom:8px;font-size:15px}
+.crow{display:flex;gap:6px}.crow input{flex:1;margin:0}.crow button{width:auto;margin:0;padding:10px 14px;font-size:15px}
+.lby{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;direction:ltr;margin:10px 0}
+.lc{border-radius:18px;padding:8px;min-height:180px;background:#0006;text-align:center}.lc h3{margin:4px 0 8px;font-size:16px}
+.lc.l0{background:linear-gradient(180deg,#2979ff55,#13469a33);border:2px solid #2979ff}.lc.l1{background:linear-gradient(180deg,#ff704355,#b23a1433);border:2px solid #ff7043}
+.pc{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px;overflow-wrap:anywhere;background:#ffffff26;border-radius:30px;padding:6px 8px;margin:6px 0;animation:zoom .4s both;font-size:15px;word-break:break-all}
+.pc.me{flex-wrap:nowrap;font-size:13px;padding:6px 4px;background:#ffd54a;color:#222;font-weight:bold;box-shadow:0 0 14px #ffd54a}
+.pc .mv{flex:none;width:26px;height:26px;padding:0;margin:0;border-radius:50%;font-size:14px;box-shadow:none}
+.ev{padding:2px 0}.ev.t0{color:#8ab4ff}.ev.t1{color:#ff9e80}.ev.t2{color:#ddd}
+
+.hero{text-align:center;margin:18px 0 10px}.hero .hl{font-size:70px;animation:zoom .6s both}
+.hb{display:flex;flex-direction:column;gap:14px;margin:26px 4px 120px}
+.hb button{height:72px;font-size:23px;border-radius:36px;border:3px solid #0008;color:#fff;text-shadow:0 2px 0 #0006;box-shadow:0 7px 0 #0007,inset 0 6px 0 #fff4;animation:zoom .5s both}
+.hb .bb1{background:linear-gradient(180deg,#26d0c0,#0c8a86)}.hb .bb2{background:linear-gradient(180deg,#6fe06f,#2b9a35);animation-delay:.08s}.hb .bb3{background:linear-gradient(180deg,#ffa63d,#e5650a);animation-delay:.16s}.hb .bb4{background:linear-gradient(180deg,#7c8cff,#3d3fb8);animation-delay:.24s;height:58px;font-size:18px}
+.tabs{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);width:min(440px,92vw);display:flex;gap:6px;background:#06120fdd;border:2px solid #ffffff30;border-radius:30px;padding:6px;z-index:30;backdrop-filter:blur(8px)}
+.tabs button{flex:1;margin:0;border-radius:24px;padding:8px 4px;font-size:22px;background:none;color:#fff;box-shadow:none;display:flex;flex-direction:column;align-items:center}.tabs button small{font-size:12px;font-weight:normal}.tabs button.on{background:#ffffff26}
+.codes{display:flex;gap:8px;justify-content:center;direction:ltr;margin:12px 0}.codes span{width:56px;height:70px;border-radius:14px;background:#fff;color:#111;font-size:40px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 #aaa;animation:zoom .5s both}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.seg button{margin:4px 0;font-size:15px;padding:12px 6px}
+.rm{background:linear-gradient(180deg,#3aa882,#237a5c);color:#fff;box-shadow:0 5px 0 #14503b}
+/* ===== ثيم جديد: ملعب فاتح ولامع ===== */
+body{color:#6b3300;background:linear-gradient(180deg,#8fe3ff 0,#c9f5c0 22%,#4fd36f 22.1%,#2fb85a 100%) fixed;font-family:"Segoe UI",Tahoma,Arial,sans-serif}
+body:before{opacity:1;background:repeating-linear-gradient(90deg,#ffffff18 0 64px,#00000000 64px 128px);top:22%}
+body::before{display:block;content:"";position:fixed;left:0;right:0;bottom:0;top:22%;z-index:-1;pointer-events:none;background:repeating-linear-gradient(90deg,#ffffff1c 0 64px,#0000 64px 128px)}
+h1,h2,h3{color:#fff;-webkit-text-stroke:0;text-shadow:0 3px 0 #6b3300,0 -2px 0 #6b3300,2px 0 0 #6b3300,-2px 0 0 #6b3300,0 6px 10px #0004;animation:none;letter-spacing:0}
+h1{font-size:36px}
+.small{color:#6b3300;opacity:1;font-weight:600}
+.card{background:#fff;color:#3b2200;border:4px solid #6b3300;border-radius:26px;box-shadow:0 7px 0 #6b3300,0 14px 22px #0003;backdrop-filter:none}
+.card .small{color:#8a5a2b}
+.card h2,.card h3{color:#6b3300;text-shadow:none}
+.big{color:#6b3300;font-weight:800}
+.card .big{color:#3b2200}
+button{background:linear-gradient(180deg,#ffe35a 0,#ffb300 55%,#ff9100 100%);color:#4a2500;border:4px solid #7a3e00;border-radius:28px;box-shadow:0 6px 0 #7a3e00,inset 0 5px 0 #fff7;text-shadow:0 1px 0 #fff8;font-weight:900}
+button:active{transform:translateY(5px);box-shadow:0 1px 0 #7a3e00,inset 0 5px 0 #fff7}
+button.sec{background:linear-gradient(180deg,#7fd8ff,#2f9bf0 60%,#1670d0);color:#fff;border-color:#0d3f86;box-shadow:0 6px 0 #0d3f86,inset 0 5px 0 #fff6;text-shadow:0 2px 0 #0d3f8699}
+button.good{background:linear-gradient(180deg,#b6f56a,#4cc23a 60%,#2a9a24);color:#fff;border-color:#14591a;box-shadow:0 6px 0 #14591a,inset 0 5px 0 #fff6;text-shadow:0 2px 0 #14591a99}
+button.bad{background:linear-gradient(180deg,#ff8f8f,#ee3b3b 60%,#c01f1f);color:#fff;border-color:#6d0f0f;box-shadow:0 6px 0 #6d0f0f,inset 0 5px 0 #fff5;text-shadow:0 2px 0 #6d0f0f99}
+button.opt{background:#fff;color:#3b2200;border:4px solid #6b3300;box-shadow:0 5px 0 #6b3300;text-shadow:none}
+button.opt b{background:#ffb300;color:#4a2500}
+button:disabled{opacity:.45}
+input,select{background:#fff;color:#3b2200;border:4px solid #6b3300;border-radius:18px;box-shadow:inset 0 3px 0 #0001;font-weight:700}
+input::placeholder{color:#7a8f84}
+.score div{border:4px solid #fff;box-shadow:0 5px 0 #6b3300;opacity:.85;color:#fff;text-shadow:0 2px 0 #0004}
+.score div.t0{background:linear-gradient(180deg,#4aa8ff,#1a62d0)}.score div.t1{background:linear-gradient(180deg,#ff9a55,#e0561a)}
+.score .on{outline:4px solid #ffe35a;box-shadow:0 0 0 4px #6b3300,0 0 22px #ffe35a;opacity:1}
+.t0{background:linear-gradient(180deg,#4aa8ff,#1a62d0)!important;color:#fff!important}.t1{background:linear-gradient(180deg,#ff9a55,#e0561a)!important;color:#fff!important}
+.tile{border:4px solid #6b3300;box-shadow:0 7px 0 #6b3300,inset 0 6px 0 #fff4;color:#fff;text-shadow:0 2px 0 #0006}
+.optv{background:#fff;color:#3b2200;border:3px solid #6b3300;box-shadow:0 4px 0 #6b330055}.optv b{background:#ffb300;color:#4a2500}
+.optv.good{background:#b6f56a}.optv.bad{background:#ffb0b0}
+.reveal{background:#fff6b8;color:#4a2500;border:3px dashed #c77a00}
+.chip{background:#ffe35a;color:#4a2500;border:3px solid #7a3e00;border-radius:16px;font-weight:800}
+.hint{background:#fff6b8;color:#4a2500;border:3px solid #c77a00}
+.timer{color:#fff;text-shadow:0 4px 0 #6b3300,2px 0 0 #6b3300,-2px 0 0 #6b3300,0 -2px 0 #6b3300;animation:none}.timer.low{color:#ff3b3b;animation:pulse .5s infinite}
+.bar{background:#fff;border:3px solid #6b3300}
+.hostlabel{background:#6b3300;color:#ffe35a;border:2px solid #fff}
+.combo{color:#c77a00;animation:none}
+.splash{background:#6b3300f0}.splash h1,.splash .big{color:#fff}
+.rc{background:#fff;color:#3b2200;border:4px solid #6b3300;box-shadow:0 5px 0 #6b3300}.rc>b{color:#6b3300}
+.t10 button.sec,.sh button.sec{color:#fff}
+.lc{background:#ffffffcc;border:4px solid #6b3300;color:#6b3300}.lc h3{color:#6b3300;text-shadow:none}
+.lc.l0{background:#d6ebff;border-color:#1a62d0}.lc.l1{background:#ffe3d1;border-color:#e0561a}
+.pc{background:#fff;color:#3b2200;border:3px solid #6b3300;font-weight:800;box-shadow:0 3px 0 #6b3300}.pc.me{background:#ffe35a;color:#4a2500;box-shadow:0 0 0 3px #fff,0 0 14px #ffb300}
+.hb button{color:#fff}
+.tabs{background:#fff;border:4px solid #6b3300;box-shadow:0 5px 0 #6b3300}.tabs button{background:none;color:#6b3300;border:0;box-shadow:none;text-shadow:none}.tabs button.on{background:#ffe35a;border:3px solid #7a3e00}
+.codes span{border:4px solid #6b3300;box-shadow:0 5px 0 #6b3300;color:#6b3300}
+.cdr{background:#fff;border-top:4px solid #6b3300;color:#3b2200}.cdr .clines{color:#3b2200}
+#cbtn{border:4px solid #0d3f86}
+.ev.t2{color:#555}.ev.t0{color:#1a62d0}.ev.t1{color:#e0561a}
+#ansb{position:fixed;top:44px;left:8px;right:8px;z-index:35;pointer-events:none;display:flex;flex-direction:column;gap:4px}
+#ansb .ai{border-radius:16px;padding:6px 12px;border:3px solid #fff;font-size:16px;box-shadow:0 4px 0 #0005;animation:zoom .3s both}
+#ansb .ai span{margin-inline-start:8px;font-weight:900;font-size:19px}
+#mute{background:#fff!important;border:3px solid #6b3300;box-shadow:0 3px 0 #6b3300}
+.hero .hl{filter:drop-shadow(0 6px 0 #6b3300)}
+.fc{box-shadow:0 8px 0 #6b3300}
+
+body{background:radial-gradient(circle at 50% -10%,#ffe27a 0,#ffc21a 35%,#ff9f0a 100%) fixed!important}
+body::before{top:0!important;background:repeating-conic-gradient(from 0deg at 50% -5%,#ffffff26 0 7deg,#0000 7deg 14deg)!important}
+body:before{display:none}
+.card{background:#fffaf0;border:3px solid #f0a020;border-radius:30px;box-shadow:0 6px 0 #d98200,0 14px 22px #0003}
+.card h2,.card h3{color:#6b3300}
+.small{color:#5a2d00}
+.tile{border:3px solid #fff;border-radius:26px;box-shadow:0 6px 0 #0004,inset 0 6px 0 #fff4}
+button.opt{border:3px solid #f0a020;background:#fffaf0;box-shadow:0 5px 0 #d98200}
+input,select{border:3px solid #f0a020;background:#fffaf0}
+.tabs{background:#fffaf0;border:3px solid #f0a020;box-shadow:0 5px 0 #d98200}
+.rc{background:#fffaf0;border:3px solid #f0a020;box-shadow:0 5px 0 #d98200}
+.lc{background:#fffaf0cc;border:3px solid #f0a020}
+.cdr{background:#fffaf0;border-top:4px solid #f0a020}
+.splash{background:#6b3300f0}
+#mute{border:3px solid #f0a020;box-shadow:0 3px 0 #d98200}
+.score div{border:3px solid #fff}
+#homeb{position:fixed;top:8px;right:8px;width:auto;padding:6px 12px;z-index:70;font-size:15px;margin:0;background:#ff5252!important;color:#fff!important;border:3px solid #0b3d2e;box-shadow:0 3px 0 #0b3d2e;border-radius:14px}
+#app{padding-bottom:100px}#app h1{padding-top:10px}
+
+/* ===== ثيم بنفسجي ===== */
+body{color:#fff!important;background:radial-gradient(ellipse at 100% 0,#5a2a8c 0,#0000 45%),radial-gradient(ellipse at 0 100%,#2a1250 0,#0000 50%),#3b1f5e fixed!important}
+body::before{display:block!important;top:0!important;background:radial-gradient(circle at 8% 30%,#ffffff10 0 90px,#0000 91px),radial-gradient(circle at 95% 70%,#ffffff0d 0 120px,#0000 121px)!important}
+h1,h2,h3{color:#fff!important;text-shadow:0 3px 0 #1d0a38!important}
+.small{color:#d9c7f5!important;opacity:1}
+.big{color:#fff!important}
+.card{background:linear-gradient(180deg,#7a2fd0,#5b1fa6)!important;color:#fff!important;border:3px solid #2a0f4d!important;border-radius:28px!important;box-shadow:0 6px 0 #1d0a38,0 14px 22px #0005!important}
+.card h2,.card h3{color:#fff!important}.card .small{color:#e3d4fa!important}.card .big{color:#fff!important}
+button{background:linear-gradient(180deg,#ffd83a,#ffc000)!important;color:#3a2200!important;border:3px solid #b98400!important;border-radius:999px!important;box-shadow:0 5px 0 #8a6200,inset 0 4px 0 #fff6!important;text-shadow:none!important}
+button.sec{background:linear-gradient(180deg,#4fc3ff,#1aa0f0)!important;color:#fff!important;border-color:#0b6fb0!important;box-shadow:0 5px 0 #0b6fb0,inset 0 4px 0 #fff5!important}
+button.good{background:linear-gradient(180deg,#8ee05a,#3fb82e)!important;color:#fff!important;border-color:#1e7a14!important;box-shadow:0 5px 0 #1e7a14,inset 0 4px 0 #fff5!important}
+button.bad{background:linear-gradient(180deg,#ff7a7a,#e83a3a)!important;color:#fff!important;border-color:#8a1414!important;box-shadow:0 5px 0 #8a1414,inset 0 4px 0 #fff5!important}
+button.opt,.optv{background:#6a2bb8!important;color:#fff!important;border:3px solid #2a0f4d!important;border-radius:22px!important;box-shadow:0 5px 0 #1d0a38!important}
+button.opt b,.optv b{background:#ffc000!important;color:#3a2200!important}
+.optv.good{background:#2e9e3a!important}.optv.bad{background:#c0392b!important}
+input,select{background:#2a1250!important;color:#fff!important;border:3px solid #8a4fe0!important;border-radius:20px!important}
+input::placeholder{color:#a58bd0!important}
+.tile{border:3px solid #ffffff55!important;border-radius:26px!important;box-shadow:0 6px 0 #1d0a38,inset 0 6px 0 #fff3!important}
+.rc,.lc,.pc{background:#5b1fa6!important;color:#fff!important;border:3px solid #2a0f4d!important;box-shadow:0 4px 0 #1d0a38!important}
+.rc>b,.lc h3{color:#fff!important}
+.lc.l0{background:#1f4fa0!important}.lc.l1{background:#a04a1f!important}
+.pc.me{background:#ffc000!important;color:#3a2200!important}
+.tabs{background:#2a1250!important;border:3px solid #8a4fe0!important;box-shadow:0 5px 0 #1d0a38!important}.tabs button{background:none!important;color:#d9c7f5!important;border:0!important;box-shadow:none!important}.tabs button.on{background:#ffc000!important;color:#3a2200!important;border:0!important}
+.cdr{background:#2a1250!important;border-top:4px solid #8a4fe0!important;color:#fff!important}.cdr .clines{color:#fff!important}
+.reveal,.hint{background:#2a1250!important;color:#ffd83a!important;border:3px dashed #ffc000!important}
+.chip{background:#2a1250!important;color:#ffd83a!important;border:2px solid #ffc000!important}
+.timer{color:#ffd83a!important;text-shadow:0 4px 0 #1d0a38!important}
+.bar{background:#2a1250!important;border:3px solid #8a4fe0!important}
+.hostlabel{background:#1d0a38!important;color:#ffd83a!important}
+.splash{background:#1d0a38f2!important}
+.codes span{background:#fff!important;color:#2a0f4d!important;border:3px solid #2a0f4d!important;border-radius:14px!important;box-shadow:0 4px 0 #1d0a38!important}
+#mute{background:#2a1250!important;color:#fff!important;border:3px solid #8a4fe0!important}
+#homeb{background:linear-gradient(180deg,#ff6a5a,#e8372a)!important;color:#fff!important;border:3px solid #8a1414!important;border-radius:16px!important}
+.score div{border:3px solid #ffffff66!important}
+.brand{position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:60;background:#1d0a38;color:#ffd83a;border:3px solid #ffc000;border-radius:999px;padding:5px 18px;font-weight:900;font-size:18px;white-space:nowrap}
+.ev.t2{color:#d9c7f5!important}
+.hb button{color:#fff!important;border-color:#0006!important;text-shadow:0 2px 0 #0006!important}.hb .bb1{background:linear-gradient(180deg,#26d0c0,#0c8a86)!important}.hb .bb2{background:linear-gradient(180deg,#6fe06f,#2b9a35)!important}.hb .bb3{background:linear-gradient(180deg,#ffa63d,#e5650a)!important}.hb .bb4{background:linear-gradient(180deg,#7c8cff,#3d3fb8)!important}
+body,button,input,select,textarea{font-family:"Cairo","Segoe UI",Tahoma,Arial,sans-serif!important}
+h1,h2,h3,.tile,.timer,.big.q,.hero h1{font-family:"Lalezar","Cairo",Tahoma,sans-serif!important;letter-spacing:.3px}
+body{font-size:17px;line-height:1.5;font-weight:600}
+button{font-weight:900!important;font-size:19px}
+h1{font-size:40px!important;line-height:1.2}h2{font-size:30px;line-height:1.25}
+.small{font-size:16px;font-weight:600}
+.tile{font-size:26px}.tile small{font-size:14px;font-weight:600}
+.optv,button.opt{font-size:19px;font-weight:800}
+input,select{font-size:18px;font-weight:700}
+.big{font-size:23px}
+</style></head><body><button id="mute" class="sec">🔊</button><button id="homeb" class="sec">🏠 خروج</button><div id="app"></div>
 <script>
 "use strict";
 /* ===== بنك الأسئلة ===== */
@@ -237,9 +389,10 @@ let muted=false,AC=null;
 function tone(f,d,t="sine",v=.15,delay=0){if(muted)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+delay+d);o.connect(g);g.connect(AC.destination);o.start(AC.currentTime+delay);o.stop(AC.currentTime+delay+d)}catch(e){}}
 const sfx={ok(){[523,659,784,1047].forEach((f,i)=>tone(f,.18,"triangle",.2,i*.08))},no(){tone(180,.35,"sawtooth",.18);tone(130,.4,"sawtooth",.18,.15)},tick(){tone(900,.06,"square",.08)},win(){[523,659,784,659,784,1047,1319].forEach((f,i)=>tone(f,.25,"triangle",.22,i*.12))},go(){tone(440,.1,"square",.12);tone(880,.25,"square",.12,.12)}};
 function buzz(n){try{navigator.vibrate&&navigator.vibrate(n)}catch(e){}}
-function confetti(n=70){const c=["#ffd54a","#ff7043","#2979ff","#66bb6a","#fff","#e040fb"];for(let i=0;i<n;i++){const e=document.createElement("div");e.className="conf";e.style.left=Math.random()*100+"vw";e.style.background=c[i%c.length];e.style.animationDelay=Math.random()*.6+"s";e.style.animationDuration=1.8+Math.random()*1.6+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),4200)}}
+function confetti(n=70){const have=document.querySelectorAll(".conf").length;if(have>150)return;n=Math.min(n,150-have);const c=["#ffd54a","#ff7043","#2979ff","#66bb6a","#fff","#e040fb"];for(let i=0;i<n;i++){const e=document.createElement("div");e.className="conf";e.style.left=Math.random()*100+"vw";e.style.background=c[i%c.length];e.style.animationDelay=Math.random()*.6+"s";e.style.animationDuration=1.8+Math.random()*1.6+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),4200)}}
 function splash(icon,name,desc,cb){stop();const d=document.createElement("div");d.className="splash";d.innerHTML=`<span>${icon}</span><h1>${name}</h1><div class="big">${desc}</div>`;document.body.appendChild(d);sfx.go();setTimeout(()=>{d.remove();cb()},1700)}
 document.getElementById("mute").onclick=function(){muted=!muted;this.textContent=muted?"🔇":"🔊"};
+document.getElementById("homeb").onclick=()=>{if(document.getElementById("hbmsg")){return}const d=document.createElement("div");d.id="hbmsg";d.style.cssText="position:fixed;inset:0;background:#000a;z-index:99;display:flex;align-items:center;justify-content:center;padding:20px";d.innerHTML=`<div class="card" style="max-width:340px;text-align:center"><h2>الخروج من اللعبة؟</h2><div class="small">هترجع للصفحة الرئيسية والمباراة الحالية هتتقفل.</div><button id="hby">🏠 خروج للرئيسية</button><button class="sec" id="hbn">↩ كمّل اللعب</button></div>`;document.body.appendChild(d);document.getElementById("hby").onclick=()=>location.reload();document.getElementById("hbn").onclick=()=>d.remove()};
 let streak=[0,0];
 /* ===== واجهة الحكم والمباراة ===== */
 const app=document.getElementById("app");let S=null,timer=null,keyH=null;
@@ -257,14 +410,14 @@ function revealBox(ans,label="👁 إجابة الحكم"){return `<button class
 function bindReveal(){on("rv",()=>{const a=document.getElementById("ra");a.style.display=a.style.display==="none"?"block":"none"})}
 /* ---------- الإعداد ---------- */
 function setup(){
-R(`<h1>⚽ تحدي الكورة 🏆</h1><div class="small">بنك: ${bankSize()+GEN.length+T3.length} عنصر. أسئلة جديدة في كل مباراة. الحكم هو الهوست ويتحكم في كل شيء.</div>
-<div class="card"><select id="place"><option value="0">📍 نفس المكان (كل الفقرات)</option><option value="1">🌐 أونلاين (كل لاعب على جهازه)</option></select><select id="mode"><option value="1">فردي 1 ضد 1</option><option value="2">فريقين 2 ضد 2</option></select><div id="f"></div><button id="go">🎬 ابدأ المباراة (أول فريق يكسب 3 فقرات)</button><button class="sec" id="rs">إعادة ضبط الأسئلة المستخدمة</button><button class="sec" id="pf">👤 حسابي وبطاقتي</button></div>`);
+R(`<h1>⚽ مارو جيم 🏆</h1><div class="small">بنك: ${bankSize()+GEN.length+T3.length} عنصر. أسئلة جديدة في كل مباراة. الحكم هو الهوست ويتحكم في كل شيء.</div>
+<div class="card"><select id="mode"><option value="1">فردي 1 ضد 1</option><option value="2">فريقين 2 ضد 2</option></select><div id="f"></div><button id="go">🎬 ابدأ المباراة (أول فريق يكسب 3 فقرات)</button><button class="sec" id="rs">إعادة ضبط الأسئلة المستخدمة</button><button class="sec" id="bh">⬅ رجوع</button></div>`);
 const f=document.getElementById("f");
 const form=()=>{const two=document.getElementById("mode").value==="2";let h="";[0,1].forEach(i=>{h+=`<div class="card"><input id="tn${i}" placeholder="اسم الفريق ${i+1}" value="${two?"فريق "+(i+1):""}"><input id="p${i}0" placeholder="${two?"اللاعب الأول":"اسم اللاعب"}"><button class="sec" data-lk="${i},0">👤 ربط حساب (اختياري)</button>`;if(two)h+=`<input id="p${i}1" placeholder="اللاعب الثاني"><button class="sec" data-lk="${i},1">👤 ربط حساب (اختياري)</button><select id="l${i}"><option value="0">القائد: الأول</option><option value="1">القائد: الثاني</option></select>`;h+="</div>"});f.innerHTML=h;ACCT={};bindLink()};
 document.getElementById("mode").onchange=form;form();
-on("rs",()=>{used={};save();alert("تم")});on("pf",profile);
+on("rs",()=>{used={};save();alert("تم")});on("bh",home);
 on("go",()=>{const two=document.getElementById("mode").value==="2";MST={};lastSc=[0,0];streak=[0,0];
-S={two,round:0,played:[],teams:[0,1].map(i=>{const g=id=>document.getElementById(id)?.value.trim();const players=two?[g("p"+i+"0")||"لاعب "+(2*i+1),g("p"+i+"1")||"لاعب "+(2*i+2)]:[g("p"+i+"0")||"لاعب "+(i+1)];return{name:g("tn"+i)||(two?"فريق "+(i+1):players[0]),players,leader:two?+g("l"+i):0,score:0,wins:0}})};begin()})}
+S={two,round:0,played:[],teams:[0,1].map(i=>{const g=id=>document.getElementById(id)?.value.trim();const players=two?[g("p"+i+"0")||"لاعب "+(2*i+1),g("p"+i+"1")||"لاعب "+(2*i+2)]:[g("p"+i+"0")||"لاعب "+(i+1)];return{name:g("tn"+i)||(two?"فريق "+(i+1):players[0]),players,leader:two?+g("l"+i):0,score:0,wins:0}})};hub()})}
 /* ---------- القائمة: الحكم يختار الفقرة ---------- */
 const SEGS=[["risk","🎲","ريسك","خاطر بالنقاط","#8e24aa"],["bank","🏦","بنك","اجمع السلسلة","#00897b"],["bingo","🔢","بينجو","3 في صف","#e65100"],["pass","🔑","كلمة السر","تلميح واحد","#c62828"],["who","❓","أنا مين","تلميحات تتفتح","#1565c0"],["act","🎭","تمثيل","بدون كلام","#f9a825"],["three","3️⃣","3 في 1","3 صفات للاعب واحد","#6d4c41"],["bell","🔔","العب مع السري","الجرس + أسئلة عامة","#d81b60"]];
 const FN={risk:()=>risk(0,start()),bank:()=>bank(0),bingo:()=>bingo(),pass:()=>pass(0),who:()=>who(0),act:()=>act(0),three:()=>three(0),bell:()=>bell(0)};
@@ -277,7 +430,7 @@ S.teams[w].wins++;S.round++;recSeg(w);sfx.win();confetti(110);
 R(`${hostTag}<div class="big" style="font-size:70px">🏅</div><h1>${esc(S.teams[w].name)} كسب الفقرة!</h1>${scoreBar(-1)}<button id="nx">${S.teams[w].wins>=3?"🏆 النتيجة النهائية":"الجولة التالية"}</button>`);
 on("nx",()=>S.teams[w].wins>=3?final():hub())}
 function tie(){const it=draw(GEN,x=>x.k);R(`${hostTag}<h1>تعادل! ⚔️ سؤال حاسم</h1>${scoreBar(-1)}<div class="card"><div class="big q">${esc(it.q)}</div>${revealBox("✔ "+esc(it.a))}</div><div class="row"><button class="t0" id="w0">✅ ${esc(S.teams[0].name)}</button><button class="t1" id="w1">✅ ${esc(S.teams[1].name)}</button></div><button class="sec" id="nw">سؤال جديد (لا أحد أجاب)</button>`);bindReveal();on("w0",()=>endSeg(0));on("w1",()=>endSeg(1));on("nw",tie)}
-function final(){const a=S.teams[0],b=S.teams[1];if(a.wins!==b.wins){const wt=a.wins>b.wins?0:1;ensureAll();S.teams[wt].players.forEach((_,p)=>MST[pk(wt,p)].w=1)}const w=a.wins===b.wins?"تعادل في الفقرات!":(a.wins>b.wins?a:b).name+" بطل المباراة 🏆";R(`<div class="big" style="font-size:90px">🏆</div><h1>النتيجة النهائية</h1>${scoreBar(-1)}<div class="big">${esc(w)}</div><button id="n">مباراة جديدة</button>`);sfx.win();confetti(160);on("n",()=>{ACCT={};MST={};setup()});cards()}
+function final(){const a=S.teams[0],b=S.teams[1];if(a.wins!==b.wins){const wt=a.wins>b.wins?0:1;ensureAll();S.teams[wt].players.forEach((_,p)=>MST[pk(wt,p)].w=1)}const w=a.wins===b.wins?"تعادل في الفقرات!":(a.wins>b.wins?a:b).name+" بطل المباراة 🏆";R(`<div class="big" style="font-size:90px">🏆</div><h1>النتيجة النهائية</h1>${scoreBar(-1)}<div class="big">${esc(w)}</div><button id="n">مباراة جديدة</button>`);sfx.win();confetti(160);on("n",newMatch);cards()}
 /* ---------- سؤال يحكم عليه الحكم ---------- */
 function judge(o){const t=S.teams[o.turn];let left=o.secs||0,fin=false;
 R(`${hostTag}<h2>${o.title}</h2>${scoreBar(o.turn)}<div class="combo">${streak[o.turn]>=2&&o.streak?"🔥 سلسلة "+streak[o.turn]:""}</div><div class="small">دور ${esc(t.name)} — ${ld(t)} يعطي الإجابة النهائية</div>${o.secs?`<div class="bar"><i id="bar" style="width:100%"></i></div>`:""}<div class="card"><div class="big q">${esc(o.q)}</div>${(o.opts||[]).map((x,i)=>`<div class="optv" id="o${i}"><b>${"أبجد"[i]}</b>${esc(x)}</div>`).join("")}</div>${revealBox("✔ "+esc(o.ans))}<div class="row"><button class="good" id="ok">✅ صح</button><button class="bad" id="no">❌ غلط</button></div>`);
@@ -334,8 +487,9 @@ clock(30,()=>{if(!d){d=true;nextBtn("⏰ خلص الوقت، الكلمة كان
 on("s1",()=>{if(d)return;d=true;stop();add(1-team,2);pass(n+1)});on("s2",()=>{if(d)return;d=true;stop();nextBtn("الكلمة كانت: <b>"+esc(w)+"</b>")})}
 }
 /* ---------- أنا مين ---------- */
-function who(n){if(n>=6)return endSeg();const turn=(start()+n)%2;const p=draw(WHO,x=>x.a);let k=1;
+function who(n){if(n>=6)return endSeg();const turn=(start()+n)%2;const p0=draw(WHO,x=>x.a);const p=(()=>{const hs=p0.h.slice(0,-1);const last=p0.h[p0.h.length-1];const isB=x=>/ولد|مولود|عام \d{4}|سنة \d{4}/.test(x);const b=hs.filter(isB),o=hs.filter(x=>!isB(x));for(let i=o.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[o[i],o[j]]=[o[j],o[i]]}const r=[...o];b.forEach(x=>r.splice(Math.min(r.length,1+Math.floor(Math.random()*3)),0,x));return{a:p0.a,h:[...r,last]}})();let k=1;
 function paint(rev){const pts=6-k;R(`${hostTag}<h2>❓ أنا مين (${n+1}/6)</h2>${scoreBar(turn)}<div class="small">دور ${esc(S.teams[turn].name)} — ${ld(S.teams[turn])}. كلما قلّت التلميحات زادت النقاط (الآن ${pts}).</div><div class="card">${p.h.slice(0,k).map((h,i)=>`<div class="hint">💡 ${i+1}) ${esc(h)}</div>`).join("")}${rev?`<div class="big q" style="color:#ffd54a">🎉 ${esc(p.a)}</div>`:revealBox("✔ "+esc(p.a))}</div>${rev?`<button id="nx">التالي</button>`:`<button class="good" id="ok">✅ الفريق عرف +${pts}</button>${k<5?`<button id="mo">💡 تلميح آخر</button>`:""}<button class="bad" id="gv">استسلام</button>`}`);bindReveal();
+if(AUTO){if(rev){CURQ=null;stop();timer=setInterval(()=>{stop();who(n+1)},4500)}else{["ok","mo","gv","rv"].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display="none"});CURQ={id:Date.now(),turn,open:true,ph:"guess",g:null,ans:p.a,onok:()=>{stop();add(turn,pts);paint(true)}};stop();timer=setInterval(()=>{if(k<5){k++;sfx.tick();paint()}else{stop();CURQ=null;paint(true)}},14000)}}
 if(rev)return on("nx",()=>who(n+1));
 on("ok",()=>{add(turn,pts);paint(true)});on("mo",()=>{k++;sfx.tick();paint()});on("gv",()=>paint(true))}
 paint()}
@@ -355,9 +509,13 @@ paint()}
 /* ---------- الجرس: العب مع السري ---------- */
 function bell(n){BK=null;BP=null;if(n>=8)return endSeg();const it=draw(GEN,x=>x.k);let locked=-1,tried=[];
 function paint(msg){R(`${hostTag}<h2>🔔 العب مع السري (${n+1}/8)</h2>${scoreBar(locked)}<div class="small">${msg||"الحكم يقرأ السؤال. أول فريق يضغط الجرس يجاوب. (زر A للفريق الأول، زر L للثاني)"}</div><div class="card"><div class="big q">${esc(it.q)}</div>${revealBox("✔ "+esc(it.a))}</div>${locked<0?`<div class="row"><button class="t0" style="height:130px;font-size:24px" id="b0" ${tried.includes(0)?"disabled":""}>🔔 ${esc(S.teams[0].name)}</button><button class="t1" style="height:130px;font-size:24px" id="b1" ${tried.includes(1)?"disabled":""}>🔔 ${esc(S.teams[1].name)}</button></div><button class="sec" id="skp">⏭ لا أحد عرف، التالي</button>`:`<div class="big">🔔 ${esc(S.teams[locked].name)} ضغط أول! ${ld(S.teams[locked])} يجاوب</div><div class="row"><button class="good" id="ok">✅ صح +2</button><button class="bad" id="no">❌ غلط -1</button></div>`}`);bindReveal();
-if(locked<0){const press=i=>{if(tried.includes(i))return;locked=i;BK=null;BP=null;sfx.go();buzz(120);paint()};if(ONLINE){BK=n+"-"+Date.now().toString(36);BP=press}on("b0",()=>press(0));on("b1",()=>press(1));on("skp",()=>{BK=null;BP=null;bell(n+1)});keyH=e=>{const k=e.key.toLowerCase();if(k==="a")press(0);if(k==="l")press(1)}}
+if(locked<0){const press=i=>{if(tried.includes(i))return;locked=i;BK=null;BP=null;if(AUTO)CURQ={id:Date.now(),turn:i,ans:it.a,open:1};sfx.go();buzz(120);paint()};if(ONLINE){BK=n+"-"+Date.now().toString(36);BP=press}on("b0",()=>press(0));on("b1",()=>press(1));on("skp",()=>{BK=null;BP=null;bell(n+1)});keyH=e=>{const k=e.key.toLowerCase();if(k==="a")press(0);if(k==="l")press(1)}}
 else{on("ok",()=>{add(locked,2);rec(locked,true);recBell(locked);bell(n+1)});on("no",()=>{add(locked,-1);rec(locked,false);tried.push(locked);locked=-1;if(tried.length>=2)return bell(n+1);paint("غلط! الفريق الآخر يقدر يضغط الجرس")})}}
 paint()}
+const TOP10=[{"t": "ترتيب الكرة الذهبية 2011 (أول 13)", "u": "https://en.wikipedia.org/wiki/2011_Ballon_d%27Or", "l": ["ليونيل ميسي", "كريستيانو رونالدو", "تشافي هيرنانديز", "أندريس إنييستا", "واين روني", "لويس سواريز", "دييغو فورلان", "صامويل إيتو", "إيكر كاسياس", "نيمار", "مسعود أوزيل", "ويسلي سنايدر", "توماس مولر"]}, {"t": "ترتيب الكرة الذهبية 2012 (أول 13)", "u": "https://en.wikipedia.org/wiki/2012_Ballon_d%27Or", "l": ["ليونيل ميسي", "كريستيانو رونالدو", "أندريس إنييستا", "تشافي هيرنانديز", "راداميل فالكاو", "إيكر كاسياس", "أندريا بيرلو", "ديدييه دروغبا", "روبين فان بيرسي", "زلاتان إبراهيموفيتش", "تشابي ألونسو", "يحيى توريه", "نيمار"]}, {"t": "ترتيب الكرة الذهبية 2013 (أول 13)", "u": "https://en.wikipedia.org/wiki/2013_Ballon_d%27Or", "l": ["كريستيانو رونالدو", "ليونيل ميسي", "فرانك ريبيري", "زلاتان إبراهيموفيتش", "نيمار", "أندريس إنييستا", "روبين فان بيرسي", "آريين روبن", "غاريث بيل", "أندريا بيرلو", "راداميل فالكاو", "يحيى توريه", "روبرت ليفاندوفسكي"]}, {"t": "ترتيب الكرة الذهبية 2014 (أول 13)", "u": "https://en.wikipedia.org/wiki/2014_Ballon_d%27Or", "l": ["كريستيانو رونالدو", "ليونيل ميسي", "مانويل نوير", "آريين روبن", "توماس مولر", "فيليب لام", "نيمار", "خاميس رودريغيز", "توني كروس", "أنخيل دي ماريا", "دييغو كوستا", "غاريث بيل", "زلاتان إبراهيموفيتش"]}, {"t": "ترتيب الكرة الذهبية 2015 (أول 13)", "u": "https://en.wikipedia.org/wiki/2015_Ballon_d%27Or", "l": ["ليونيل ميسي", "كريستيانو رونالدو", "نيمار", "روبرت ليفاندوفسكي", "لويس سواريز", "توماس مولر", "مانويل نوير", "إدين هازارد", "أندريس إنييستا", "أليكسيس سانشيز", "زلاتان إبراهيموفيتش", "يحيى توريه", "سيرخيو أغويرو"]}, {"t": "ترتيب الكرة الذهبية 2016 (أول 13)", "u": "https://en.wikipedia.org/wiki/2016_Ballon_d%27Or", "l": ["كريستيانو رونالدو", "ليونيل ميسي", "أنطوان غريزمان", "لويس سواريز", "نيمار", "غاريث بيل", "رياض محرز", "جيمي فاردي", "جانلويجي بوفون", "بيبي", "بيير إيميريك أوباميانغ", "روي باتريسيو", "زلاتان إبراهيموفيتش"]}, {"t": "ترتيب الكرة الذهبية 2017 (أول 13)", "u": "https://en.wikipedia.org/wiki/2017_Ballon_d%27Or", "l": ["كريستيانو رونالدو", "ليونيل ميسي", "نيمار", "جانلويجي بوفون", "لوكا مودريتش", "سيرخيو راموس", "كيليان مبابي", "نغولو كانتي", "روبرت ليفاندوفسكي", "هاري كين", "إدينسون كافاني", "إيسكو", "لويس سواريز"]}, {"t": "ترتيب الكرة الذهبية 2018 (أول 13)", "u": "https://en.wikipedia.org/wiki/2018_Ballon_d%27Or", "l": ["لوكا مودريتش", "كريستيانو رونالدو", "أنطوان غريزمان", "كيليان مبابي", "ليونيل ميسي", "محمد صلاح", "رافاييل فاران", "إدين هازارد", "كيفن دي بروين", "هاري كين", "نغولو كانتي", "نيمار", "لويس سواريز"]}, {"t": "ترتيب الكرة الذهبية 2019 (أول 13)", "u": "https://en.wikipedia.org/wiki/2019_Ballon_d%27Or", "l": ["ليونيل ميسي", "فيرجيل فان دايك", "كريستيانو رونالدو", "ساديو ماني", "محمد صلاح", "كيليان مبابي", "أليسون بيكر", "روبرت ليفاندوفسكي", "برناردو سيلفا", "رياض محرز", "فرينكي دي يونغ", "رحيم ستيرلينغ", "إدين هازارد"]}, {"t": "ترتيب الكرة الذهبية 2022 (أول 13)", "u": "https://en.wikipedia.org/wiki/2022_Ballon_d%27Or", "l": ["كريم بنزيما", "ساديو ماني", "كيفن دي بروين", "روبرت ليفاندوفسكي", "محمد صلاح", "كيليان مبابي", "تيبو كورتوا", "فينيسيوس جونيور", "لوكا مودريتش", "إيرلينغ هالاند", "سون هيونغ مين", "رياض محرز", "سيباستيان هالير"]}, {"t": "ترتيب الكرة الذهبية 2023 (أول 13)", "u": "https://en.wikipedia.org/wiki/2023_Ballon_d%27Or", "l": ["ليونيل ميسي", "إيرلينغ هالاند", "كيليان مبابي", "كيفن دي بروين", "رودري", "فينيسيوس جونيور", "خوليان ألفاريز", "فكتور أوسيمين", "برناردو سيلفا", "لوكا مودريتش", "محمد صلاح", "روبرت ليفاندوفسكي", "ياسين بونو"]}];
+const LU=[{"t": "نهائي دوري أبطال أوروبا 2022", "u": "https://en.wikipedia.org/wiki/2022_UEFA_Champions_League_final", "teams": [{"n": "ليفربول", "p": [["GK", "أليسون بيكر"], ["RB", "ترنت ألكسندر-أرنولد"], ["CB", "إبراهيما كوناتي"], ["CB", "فيرجيل فان دايك"], ["LB", "أندرو روبرتسون"], ["CM", "جوردان هندرسون"], ["CM", "فابينيو تافاريس"], ["CM", "تياغو ألكانتارا"], ["RF", "محمد صلاح"], ["CF", "ساديو ماني"], ["LF", "لويس دياز"]]}, {"n": "ريال مدريد", "p": [["GK", "تيبو كورتوا"], ["RB", "داني كارفاخال"], ["CB", "إيدر ميليتاو"], ["CB", "دافيد ألابا"], ["LB", "فيرلاند ميندي"], ["CM", "لوكا مودريتش"], ["CM", "كاسيميرو"], ["CM", "توني كروس"], ["RF", "فيديريكو فالفيردي"], ["CF", "كريم بنزيما"], ["LF", "فينيسيوس جونيور"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2018", "u": "https://en.wikipedia.org/wiki/2018_UEFA_Champions_League_final", "teams": [{"n": "ريال مدريد", "p": [["GK", "كيلور نافاس"], ["RB", "داني كارفاخال"], ["CB", "رافاييل فاران"], ["CB", "سيرخيو راموس"], ["LB", "مارسيلو"], ["DM", "كاسيميرو"], ["CM", "لوكا مودريتش"], ["CM", "توني كروس"], ["AM", "إيسكو"], ["CF", "كريم بنزيما"], ["CF", "كريستيانو رونالدو"]]}, {"n": "ليفربول", "p": [["GK", "لوريس كاريوس"], ["RB", "ترنت ألكسندر-أرنولد"], ["CB", "ديان لوفرين"], ["CB", "فيرجيل فان دايك"], ["LB", "أندرو روبرتسون"], ["CM", "جيمس ميلنر"], ["CM", "جوردان هندرسون"], ["CM", "جورجينيو فينالدوم"], ["RF", "محمد صلاح"], ["CF", "روبرتو فيرمينو"], ["LF", "ساديو ماني"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2014", "u": "https://en.wikipedia.org/wiki/2014_UEFA_Champions_League_final", "teams": [{"n": "ريال مدريد", "p": [["GK", "إيكر كاسياس"], ["RB", "داني كارفاخال"], ["CB", "رافاييل فاران"], ["CB", "سيرخيو راموس"], ["LB", "فابيو كوينتراو"], ["RM", "لوكا مودريتش"], ["CM", "سامي خضيرة"], ["LM", "أنخيل دي ماريا"], ["RF", "غاريث بيل"], ["CF", "كريم بنزيما"], ["LF", "كريستيانو رونالدو"]]}, {"n": "أتلتيكو مدريد", "p": [["GK", "تيبو كورتوا"], ["RB", "خوانفران"], ["CB", "جواو ميراندا"], ["CB", "دييغو غودين"], ["LB", "فيليبي لويس"], ["RM", "راؤول غارسيا"], ["CM", "تياغو مينديز"], ["CM", "غابي"], ["LM", "كوكي"], ["CF", "دييغو كوستا"], ["CF", "دافيد فيا"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2012", "u": "https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_final", "teams": [{"n": "بايرن ميونخ", "p": [["GK", "مانويل نوير"], ["RB", "فيليب لام"], ["CB", "جيروم بواتينغ"], ["CB", "أناتولي تيموشوك"], ["LB", "دييغو كونتينتو"], ["DM", "باستيان شفاينشتايغر"], ["DM", "توني كروس"], ["RW", "آريين روبن"], ["AM", "توماس مولر"], ["LW", "فرانك ريبيري"], ["CF", "ماريو غوميز"]]}, {"n": "تشيلسي", "p": [["GK", "بيتر تشيك"], ["RB", "جوزيه بوسينغوا"], ["CB", "دافيد لويز"], ["CB", "غاري كاهيل"], ["LB", "أشلي كول"], ["DM", "جون أوبي ميكل"], ["CM", "فرانك لامبارد"], ["RW", "سالومون كالو"], ["AM", "خوان ماتا"], ["LW", "ريان برتراند"], ["CF", "ديدييه دروغبا"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2005", "u": "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final", "teams": [{"n": "ميلان", "p": [["GK", "ديدا"], ["RB", "كافو"], ["CB", "ياب ستام"], ["CB", "أليساندرو نيستا"], ["LB", "باولو مالديني"], ["DM", "أندريا بيرلو"], ["RM", "جنارو غاتوزو"], ["LM", "كلارنس سيدورف"], ["AM", "كاكا"], ["CF", "أندري شيفتشينكو"], ["CF", "هرنان كرسبو"]]}, {"n": "ليفربول", "p": [["GK", "ييرزي دوديك"], ["RB", "ستيف فينان"], ["CB", "جيمي كاراغر"], ["CB", "سامي هيبيا"], ["LB", "جيمي تراوري"], ["DM", "تشابي ألونسو"], ["RM", "لويس غارسيا"], ["CM", "ستيفن جيرارد"], ["LM", "يون آرنه ريسه"], ["SS", "هاري كيول"], ["CF", "ميلان باروش"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2023", "u": "https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final", "teams": [{"n": "مانشستر سيتي", "p": [["GK", "إيدرسون مورايس"], ["CB", "مانويل أكانجي"], ["CB", "روبن دياز"], ["CB", "ناثان أكي"], ["DM", "جون ستونز"], ["DM", "رودري"], ["RW", "برناردو سيلفا"], ["AM", "كيفن دي بروين"], ["AM", "إيلكاي غوندوغان"], ["LW", "جاك غريليش"], ["CF", "إيرلينغ هالاند"]]}, {"n": "إنتر ميلان", "p": [["GK", "أندريه أونانا"], ["CB", "ماتيو دارميان"], ["CB", "فرانسيسكو أتشيربي"], ["CB", "أليساندرو باستوني"], ["RM", "دنزل دومفريس"], ["CM", "نيكولو باريلا"], ["CM", "مارسيلو بروزوفيتش"], ["CM", "خاقان جال خان أوغلي"], ["LM", "فيديريكو ديماركو"], ["CF", "لاوتارو مارتينيز"], ["CF", "إدين دجيكو"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2019", "u": "https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final", "teams": [{"n": "توتنهام", "p": [["GK", "هيغو لوريس"], ["RB", "كيران تريبير"], ["CB", "توبي ألدرفيريلد"], ["CB", "يان فيرتونغن"], ["LB", "داني روز"], ["CM", "موسى سيسوكو"], ["CM", "هاري وينكس"], ["RW", "ديلي ألي"], ["AM", "كريستيان إريكسن"], ["LW", "سون هيونغ مين"], ["CF", "هاري كين"]]}, {"n": "ليفربول", "p": [["GK", "أليسون بيكر"], ["RB", "ترنت ألكسندر-أرنولد"], ["CB", "جويل ماتيب"], ["CB", "فيرجيل فان دايك"], ["LB", "أندرو روبرتسون"], ["CM", "جوردان هندرسون"], ["CM", "فابينيو تافاريس"], ["CM", "جورجينيو فينالدوم"], ["RW", "محمد صلاح"], ["CF", "روبرتو فيرمينو"], ["LW", "ساديو ماني"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2015", "u": "https://en.wikipedia.org/wiki/2015_UEFA_Champions_League_final", "teams": [{"n": "يوفنتوس", "p": [["GK", "جانلويجي بوفون"], ["RB", "ستيفان ليختشتاينر"], ["CB", "أندريا بارزالي"], ["CB", "ليوناردو بونوتشي"], ["LB", "باتريس إيفرا"], ["DM", "أندريا بيرلو"], ["CM", "كلاوديو ماركيزيو"], ["CM", "بول بوغبا"], ["AM", "أرتورو فيدال"], ["CF", "كارلوس تيفيز"], ["CF", "ألفارو موراتا"]]}, {"n": "برشلونة", "p": [["GK", "مارك أندريه تير شتيغن"], ["RB", "داني ألفيس"], ["CB", "جيرارد بيكيه"], ["CB", "خافيير ماسكيرانو"], ["LB", "جوردي ألبا"], ["CM", "إيفان راكيتيتش"], ["CM", "سيرجيو بوسكيتس"], ["CM", "أندريس إنييستا"], ["RF", "ليونيل ميسي"], ["CF", "لويس سواريز"], ["LF", "نيمار"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2011", "u": "https://en.wikipedia.org/wiki/2011_UEFA_Champions_League_final", "teams": [{"n": "برشلونة", "p": [["GK", "فكتور فالديز"], ["RB", "داني ألفيس"], ["CB", "خافيير ماسكيرانو"], ["CB", "جيرارد بيكيه"], ["LB", "إريك أبيدال"], ["DM", "سيرجيو بوسكيتس"], ["CM", "تشافي هيرنانديز"], ["CM", "أندريس إنييستا"], ["RF", "دافيد فيا"], ["CF", "ليونيل ميسي"], ["LF", "بيدرو رودريغز"]]}, {"n": "مانشستر يونايتد", "p": [["GK", "إدوين فان در سار"], ["RB", "فابيو"], ["CB", "ريو فرديناند"], ["CB", "نيمانيا فيديتش"], ["LB", "باتريس إيفرا"], ["RM", "أنتونيو فالنسيا"], ["CM", "مايكل كاريك"], ["CM", "ريان غيغز"], ["LM", "بارك جي سونغ"], ["SS", "واين روني"], ["CF", "تشيشاريتو"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2009", "u": "https://en.wikipedia.org/wiki/2009_UEFA_Champions_League_final", "teams": [{"n": "برشلونة", "p": [["GK", "فكتور فالديز"], ["RB", "كارليس بويول"], ["CB", "يحيى توريه"], ["CB", "جيرارد بيكيه"], ["LB", "سيلفينيو"], ["DM", "سيرجيو بوسكيتس"], ["CM", "تشافي هيرنانديز"], ["CM", "أندريس إنييستا"], ["RW", "ليونيل ميسي"], ["LW", "تييري هنري"], ["CF", "صامويل إيتو"]]}, {"n": "مانشستر يونايتد", "p": [["GK", "إدوين فان در سار"], ["RB", "جون أوشي"], ["CB", "ريو فرديناند"], ["CB", "نيمانيا فيديتش"], ["LB", "باتريس إيفرا"], ["CM", "أندرسون أوليفيرا"], ["CM", "مايكل كاريك"], ["CM", "ريان غيغز"], ["RW", "بارك جي سونغ"], ["LW", "واين روني"], ["CF", "كريستيانو رونالدو"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2008", "u": "https://en.wikipedia.org/wiki/2008_UEFA_Champions_League_final", "teams": [{"n": "مانشستر يونايتد", "p": [["GK", "إدوين فان در سار"], ["RB", "ويس براون"], ["CB", "ريو فرديناند"], ["CB", "نيمانيا فيديتش"], ["LB", "باتريس إيفرا"], ["RM", "أوين هارغريفز"], ["CM", "بول سكولز"], ["CM", "مايكل كاريك"], ["LM", "كريستيانو رونالدو"], ["CF", "واين روني"], ["CF", "كارلوس تيفيز"]]}, {"n": "تشيلسي", "p": [["GK", "بيتر تشيك"], ["RB", "مايكل إيسيان"], ["CB", "ريكاردو كارفاليو"], ["CB", "جون تيري"], ["LB", "أشلي كول"], ["DM", "كلود ماكيليلي"], ["CM", "مايكل بالاك"], ["CM", "فرانك لامبارد"], ["RW", "جو كول"], ["LW", "فلوران مالودا"], ["CF", "ديدييه دروغبا"]]}]}, {"t": "نهائي دوري أبطال أوروبا 2020", "u": "https://en.wikipedia.org/wiki/2020_UEFA_Champions_League_final", "teams": [{"n": "باريس سان جيرمان", "p": [["GK", "كيلور نافاس"], ["RB", "تيلو كيرر"], ["CB", "تياغو سيلفا"], ["CB", "بريسنيل كيمبيمبي"], ["LB", "خوان بيرنات"], ["CM", "أندير هيريرا"], ["CM", "ماركينيوس"], ["CM", "لياندرو باريديس"], ["RF", "أنخيل دي ماريا"], ["CF", "كيليان مبابي"], ["LF", "نيمار"]]}, {"n": "بايرن ميونخ", "p": [["GK", "مانويل نوير"], ["RB", "يوزوا كيميش"], ["CB", "جيروم بواتينغ"], ["CB", "دافيد ألابا"], ["LB", "ألفونسو ديفيز"], ["CM", "تياغو ألكانتارا"], ["CM", "ليون غوريتسكا"], ["RW", "سيرج غنابري"], ["AM", "توماس مولر"], ["LW", "كينغسلي كومان"], ["CF", "روبرت ليفاندوفسكي"]]}]}];
+const BDW=[{"y": 2011, "w": "ليونيل ميسي", "s": "كريستيانو رونالدو", "t": "تشافي هيرنانديز"}, {"y": 2012, "w": "ليونيل ميسي", "s": "كريستيانو رونالدو", "t": "أندريس إنييستا"}, {"y": 2013, "w": "كريستيانو رونالدو", "s": "ليونيل ميسي", "t": "فرانك ريبيري"}, {"y": 2014, "w": "كريستيانو رونالدو", "s": "ليونيل ميسي", "t": "مانويل نوير"}, {"y": 2015, "w": "ليونيل ميسي", "s": "كريستيانو رونالدو", "t": "نيمار"}, {"y": 2016, "w": "كريستيانو رونالدو", "s": "ليونيل ميسي", "t": "أنطوان غريزمان"}, {"y": 2017, "w": "كريستيانو رونالدو", "s": "ليونيل ميسي", "t": "نيمار"}, {"y": 2018, "w": "لوكا مودريتش", "s": "كريستيانو رونالدو", "t": "أنطوان غريزمان"}, {"y": 2019, "w": "ليونيل ميسي", "s": "فيرجيل فان دايك", "t": "كريستيانو رونالدو"}, {"y": 2022, "w": "كريم بنزيما", "s": "ساديو ماني", "t": "كيفن دي بروين"}, {"y": 2023, "w": "ليونيل ميسي", "s": "إيرلينغ هالاند", "t": "كيليان مبابي"}];
+
 /* ===== حسابات + بطاقات ===== */
 let ACCT={},MST={};
 const pk=(t,p)=>t+","+p;
@@ -374,7 +532,7 @@ return{ovr,rows:[["دقة",acc],["سرعة",spd],["فوز",win],["خبرة",kno]
 function cardHTML(name,s,tag){const r=rate(s);const t=r.ovr>=85?"star":r.ovr>=75?"gold":r.ovr>=60?"silver":"bronze";
 return `<div class="fc ${t}"><div class="fcs"></div><div class="fo">${r.ovr}<small>${tag||"OVR"}</small></div><div class="fn">${esc(name)}</div><div class="fg">${r.rows.map(x=>`<div><b>${x[1]}</b> ${x[0]}</div>`).join("")}</div></div>`}
 function sumStats(a,b){const o={};["m","w","sw","a","c","ts","tn","b"].forEach(k=>o[k]=(a[k]||0)+(b[k]||0));return o}
-function authDlg(cb){const d=document.createElement("div");d.className="splash";d.style.background="#000d";d.innerHTML=`<div class="card" style="width:min(380px,92vw)"><h2>👤 حساب اللاعب</h2><input id="au" placeholder="اسم المستخدم" autocomplete="username"><input id="ap" type="password" placeholder="الباسورد (6 حروف أو أكتر)" autocomplete="current-password"><div class="small" id="ae"></div><div class="row"><button id="al">دخول</button><button class="sec" id="ar">حساب جديد</button></div><button class="sec" id="ax">إلغاء</button></div>`;document.body.appendChild(d);
+function authDlg(cb){document.querySelectorAll(".conf").forEach(e=>e.remove());const d=document.createElement("div");d.className="splash";d.style.background="#000d";d.innerHTML=`<div class="card" style="width:min(380px,92vw)"><h2>👤 حساب اللاعب</h2><input id="au" placeholder="اسم المستخدم" autocomplete="username"><input id="ap" type="password" placeholder="الباسورد (6 حروف أو أكتر)" autocomplete="current-password"><div class="small" id="ae"></div><div class="row"><button id="al">دخول</button><button class="sec" id="ar">حساب جديد</button></div><button class="sec" id="ax">إلغاء</button></div>`;document.body.appendChild(d);
 const go=async a=>{try{const r=await api({a,username:document.getElementById("au").value,password:document.getElementById("ap").value});d.remove();cb(r)}catch(e){document.getElementById("ae").textContent=e.message}};
 d.querySelector("#al").onclick=()=>go("login");d.querySelector("#ar").onclick=()=>go("register");d.querySelector("#ax").onclick=()=>d.remove()}
 function bindLink(){document.querySelectorAll("[data-lk]").forEach(b=>b.onclick=()=>authDlg(r=>{const[i,j]=b.dataset.lk.split(",");ACCT[i+","+j]={u:r.username,token:r.token,stats:r.stats};document.getElementById("p"+i+j).value=r.username;b.textContent="✅ "+r.username}))}
@@ -385,47 +543,247 @@ if(items.length){try{const r=await api({a:"savestats",items});keys.forEach((k,i)
 let h="";S.teams.forEach((t,i)=>t.players.forEach((n,p)=>{const k=pk(i,p);const st=saved[k]||MST[k];h+=`<div>${cardHTML(ACCT[k]?ACCT[k].u:n,st,saved[k]?"OVR":"المباراة")}<div class="small">${saved[k]?"✅ اتحفظت في حسابه":(ACCT[k]?"⚠ ما اتحفظتش":"بدون حساب، المباراة دي بس")}</div></div>`}));
 const d=document.createElement("div");d.innerHTML=`<h2>🃏 بطاقات اللاعبين</h2><div class="cards">${h}</div>`;app.appendChild(d)}
 
-/* ===== أونلاين ===== */
-let ONLINE=false,OC=null,BK=null,BP=null;
+/* ===== أونلاين v2 ===== */
+let PUB=false,ONLINE=false,AUTO=false,OC=null,BK=null,BP=null,CURQ=null,BNK=null,LOBBYON=false,TN=["فريق 1","فريق 2"],HC=null;
 const API="/api/g";
 async function api(b){const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(b)});let j;try{j=await r.json()}catch(e){throw new Error("السيرفر مش شغال. لازم اللعبة تتفتح من رابط فيرسل")}if(!r.ok||j.err)throw new Error(j.err||"خطأ");return j}
-const SEGV=()=>SEGS.filter(s=>!(ONLINE&&s[0]==="act"));
+const TOKEN=()=>localStorage.getItem("tok");
+const SEGV=()=>SEGS.filter(s=>!(ONLINE&&s[0]==="act")&&!(AUTO&&!["risk","bank","bell","top10","pass","who","halba"].includes(s[0])));
 const snap=()=>{const c=app.cloneNode(true);c.querySelectorAll("button,input,select,textarea,.hostlabel").forEach(e=>e.remove());c.querySelectorAll(".reveal").forEach(e=>{if(e.style.display==="none")e.remove()});return c.innerHTML};
-function pubState(){const tm=document.getElementById("tm");return{html:snap(),tm:tm?tm.textContent:null,bk:BK,names:S?S.teams.map(t=>t.name):[],players:S?S.teams.map(t=>t.players):[]}}
-let lastP="",hostEv=0,hostFeed=[],hostPl=[];
+function pubState(){const tm=document.getElementById("tm");const q=CURQ?{id:CURQ.id,opts:CURQ.opts||null,turn:CURQ.turn,open:!!CURQ.open,g:CURQ.g||null,ph:CURQ.ph||null,both:!!CURQ.both}:null;
+return{html:LOBBYON?"":snap(),lb:LOBBYON,tm:tm?tm.textContent:null,bk:BK,qo:q,bnk:BNK,gv:(CURQ&&(CURQ.ph==="clue"||CURQ.ph==="clue2"))?CURQ.w:null,auto:AUTO,pub:PUB?1:0,names:S?S.teams.map(t=>t.name):TN}}
+const nz=s=>String(s).replace(/[ًٌٍَُِّْ]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/\s+/g," ").trim().toLowerCase();
+const mt=(a,g)=>{a=nz(a);g=nz(g);if(g.length<2)return false;return a===g||a.split(" ").includes(g)||(g.length>=4&&(a.includes(g)||g.includes(a)))};
+function handleAns(e){if(!AUTO||e.kind!=="answer")return;
+if(e.body==="__bank"){if(BNK!=null&&Number(e.team)===BNK){const b=document.getElementById("bk");b&&b.click()}return}
+const q=CURQ;if(!q)return;
+if(q.both){const t=Number(e.team);if(t!==0&&t!==1)return;if(!q.vals[t])q.vals[t]=e.body;if(q.vals[0]&&q.vals[1])q.reveal();return}
+if(q.ph==="clue2"){const t=Number(e.team);if(t!==0&&t!==1||e.name!==q.g[t]||q.clues[t]!==null)return;q.onclue(t,e.body);return}
+if(q.ph==="guess2"){const t=Number(e.team);if(t!==0&&t!==1)return;if(q.g.includes(e.name)||q.blk[t])return;if(mt(q.ans,e.body)){CURQ=null;q.win(t)}else CURQ={...q,id:Date.now()};return}
+if(Number(e.team)!==q.turn)return;
+if(q.ph==="clue"){if(e.name!==q.g)return;q.onclue(e.body);return}
+if(q.ph==="guess"){if(q.g&&e.name===q.g)return;if(mt(q.ans,e.body)){CURQ=null;q.onok()}else CURQ={...q,id:Date.now()};return}
+if(q.t10){const gg=nz(e.body);if(gg.length<2)return;const i=q.t10.findIndex((nm,k)=>q.got[k]<0&&(nz(nm)===gg||nz(nm).split(" ").includes(gg)||(gg.length>=4&&(nz(nm).includes(gg)||gg.includes(nz(nm))))));if(i>=0){CURQ=null;const b=document.getElementById("t"+i);b&&b.click()}else{CURQ={...q,id:Date.now()}}return}
+const a=nz(q.ans),g=nz(e.body);
+const ok=q.opts?e.body===q.ans:(g===a||(a.length>3&&g.includes(a))||(g.length>3&&a.includes(g)));
+CURQ=null;const b=document.getElementById(ok?"ok":"no");b&&b.click()}
+const _jg=judge;judge=function(o){_jg(o);if(AUTO){["ok","no","dbl"].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display="none"});CURQ={id:Date.now(),opts:o.opts,turn:o.turn,ans:o.ans}}};
+function chatUI(send,ans){const b=document.createElement("button");b.id="cbtn";b.innerHTML='💬<i style="display:none">0</i>';const d=document.createElement("div");d.className="cdr";d.innerHTML=`<div class="clines"></div><div class="crow"><input class="cin" placeholder="اكتب رسالة" autocomplete="off"><button class="csn">أرسل</button>${ans?'<button class="sec can">✍️ إجابتي</button>':""}</div>`;document.body.append(b,d);let un=0;
+const lines=d.querySelector(".clines"),inp=d.querySelector(".cin");
+b.onclick=()=>{d.classList.toggle("open");un=0;b.querySelector("i").style.display="none";lines.scrollTop=lines.scrollHeight};
+const go=k=>{const v=inp.value.trim();if(!v)return;inp.value="";send(k,v)};d.querySelector(".csn").onclick=()=>go("chat");const a=d.querySelector(".can");if(a)a.onclick=()=>go("answer");inp.onkeydown=e=>{if(e.key==="Enter")go("chat")};
+return{add(html){lines.insertAdjacentHTML("beforeend",html);while(lines.children.length>40)lines.firstChild.remove();if(!d.classList.contains("open")){un++;const i=b.querySelector("i");i.textContent=un;i.style.display="block"}else lines.scrollTop=lines.scrollHeight}}}
+let lastP="",hostEv=0,hostPl=[];
+function showAns(e){let b=document.getElementById("ansb");if(!b){b=document.createElement("div");b.id="ansb";document.body.appendChild(b)}
+const d=document.createElement("div");d.className="ai t"+e.team;d.innerHTML=`<b>${esc(e.name)}</b>${S&&S.teams[e.team]?" · "+esc(S.teams[e.team].name):""}<span>${esc(e.body)}</span>`;b.appendChild(d);sfx.ok&&0;while(b.children.length>5)b.firstChild.remove()}
+function clearAns(){const b=document.getElementById("ansb");if(b)b.innerHTML=""}
+const _R0=R;R=function(h){clearAns();_R0(h)};
 async function hostLoop(){if(!OC)return;try{const st=pubState(),sg=JSON.stringify(st);if(sg!==lastP){lastP=sg;await api({a:"publish",code:OC.code,token:OC.token,state:st})}
 const r=await api({a:"poll",code:OC.code,token:OC.token,since:hostEv,ver:-1});hostPl=r.players;
-for(const e of r.events){hostEv=Math.max(hostEv,Number(e.id));if(e.kind==="bell"){if(BK&&e.bellkey===BK&&BP){const k=BK;BK=null;const p=BP;p(e.team)}}else hostFeed.push(e)}
-hostFeed=hostFeed.slice(-40);hostPanel()}catch(e){const p=document.getElementById("hp");if(p)p.dataset.err=e.message}
+for(const e of r.events){hostEv=Math.max(hostEv,Number(e.id));if(e.kind==="bell"){if(BK&&e.bellkey===BK&&BP){BK=null;const p=BP;p(e.team)}}else{HC&&HC.add(`<div class="ev t${e.team<0?2:e.team}"><b>${esc(e.name||"")}</b>${e.kind==="answer"?" ✍️":""}: ${esc(e.body==="__bank"?"🏦 بنك":e.body||"")}</div>`);if(e.kind==="answer"&&!AUTO)showAns(e);handleAns(e)}}
+if(AUTO){const nb=[...app.querySelectorAll("button")].find(b=>/التالي/.test(b.textContent)&&!b.dataset.an);if(nb){nb.dataset.an=1;setTimeout(()=>nb.click(),2600)}}}catch(e){}
 setTimeout(hostLoop,1000)}
-function hostPanel(){let p=document.getElementById("hp");if(!p){p=document.createElement("div");p.id="hp";p.innerHTML=`<div id="hph"></div><div id="hpb"></div><div id="hpf"><input id="hpi" placeholder="رسالة للاعبين"><select id="hpt"><option value="-1">الكل</option><option value="0">فريق 1</option><option value="1">فريق 2</option></select><button id="hps">أرسل</button></div>`;document.body.appendChild(p);p.querySelector("#hph").onclick=()=>p.classList.toggle("min");p.querySelector("#hps").onclick=async()=>{const i=document.getElementById("hpi");if(!i.value.trim())return;try{await api({a:"send",code:OC.code,token:OC.token,body:i.value,team:+document.getElementById("hpt").value});i.value=""}catch(e){}}}
-const tn=i=>S?S.teams[i].name:"";const cnt=hostPl.length;
-document.getElementById("hph").textContent=`📡 غرفة ${OC.code} · ${cnt} لاعب · اضغط للتصغير`;
-document.getElementById("hpb").innerHTML=hostFeed.slice(-8).map(e=>`<div class="ev t${e.team}"><b>${esc(e.name||"")}</b>${e.kind==="answer"?" ✍️":""}${e.kind==="host"?" 🧑‍⚖️":""}: ${esc(e.body||"")}</div>`).join("")||"<div class=small>لسه مفيش رسائل</div>"}
-function lobby(){const link=location.origin+location.pathname+"?r="+OC.code;
-const paint=()=>{R(`${hostTag}<h1>🌐 غرفة أونلاين</h1><div class="card"><div class="small">كود الغرفة</div><div class="big" style="font-size:64px;letter-spacing:8px">${OC.code}</div><div class="small">ابعت الرابط ده للاعبين (كل واحد يفتحه على موبايله ويختار فريقه):</div><div class="chip" style="word-break:break-all;direction:ltr">${link}</div><button id="cp">📋 انسخ الرابط</button></div><div class="card"><b>اللاعبين (${hostPl.length})</b><div id="pl">${hostPl.map(p=>`<div class="t${p.team}">${esc(p.name)} — ${esc(S.teams[p.team].name)}</div>`).join("")||"<div class=small>مستنيين اللاعبين...</div>"}</div></div><button id="st">▶ ابدأ المباراة</button>`);
-on("cp",()=>{navigator.clipboard&&navigator.clipboard.writeText(link);alert("اتنسخ")});on("st",hub)};
-paint();let n=-1;const t=setInterval(()=>{if(!document.getElementById("pl")){clearInterval(t);return}if(hostPl.length!==n){n=hostPl.length;paint()}},1000)}
-async function begin(){const pl=document.getElementById("place");if(pl&&pl.value==="1"){try{const st=pubState();const r=await api({a:"create",state:st});OC=r;ONLINE=true;lastP=JSON.stringify(st);hostLoop();lobby()}catch(e){alert("مقدرش أفتح غرفة: "+e.message);ONLINE=false;OC=null;hub()}}else hub()}
+function lobbyView(players,me,names,move){const col=t=>players.filter(p=>p.team===t).map(p=>`<div class="pc ${p.id===me?"me":""}">${p.id===me&&move?'<button class="mv" data-d="L">◀</button>':""}<span>${esc(p.name)}</span>${p.id===me&&move?'<button class="mv" data-d="R">▶</button>':""}</div>`).join("")||'<div class="small">—</div>';
+return `<div class="brand">⚽ مارو جيم · Maro Game</div><div class="lby"><div class="lc l0"><h3>${esc(names[0])}</h3>${col(0)}</div><div class="lc mid"><h3>اللاعبين</h3>${col(-1)}</div><div class="lc l1"><h3>${esc(names[1])}</h3>${col(1)}</div></div>`}
+function lobby(){const link=location.origin+location.pathname+"?r="+OC.code;let sig="";
+const paint=()=>{R(`${hostTag}<h1>🌐 غرفة أونلاين</h1><div class="card"><div class="small">كود الغرفة · ${AUTO?"🤖 بدون حكم":"🧑‍⚖️ بحكم"} · ${PUB?"🌍 عامة":"🔒 خاصة"}</div><div class="codes">${[...OC.code].map(c=>`<span>${c}</span>`).join("")}</div><div class="row"><button id="cp" class="sec">📋 نسخ</button><button id="sh" class="sec">📤 مشاركة</button></div></div><div class="row"><input id="tn0" value="${esc(TN[0])}" placeholder="اسم الفريق 1"><input id="tn1" value="${esc(TN[1])}" placeholder="اسم الفريق 2"></div>${lobbyView(hostPl,null,TN,false)}<div class="small">كل لاعب يدخل بحسابه ويختار فريقه بالأسهم (ماكس 2 في الفريق). لازم الفريقين نفس العدد.</div><button id="st">▶ ابدأ المباراة</button><button class="sec" id="bk0">إغلاق الغرفة</button>`);
+on("cp",()=>{navigator.clipboard&&navigator.clipboard.writeText(link);alert("اتنسخ")});on("sh",()=>{if(navigator.share)navigator.share({title:"تحدي الكورة",text:"ادخل غرفتي، الكود "+OC.code,url:link});else{navigator.clipboard&&navigator.clipboard.writeText(link);alert("اتنسخ")}});
+["tn0","tn1"].forEach((id,i)=>{document.getElementById(id).oninput=e=>{TN[i]=e.target.value||"فريق "+(i+1)}});on("st",startOnline);on("bk0",()=>{OC=null;ONLINE=false;AUTO=false;LOBBYON=false;if(HC){document.getElementById("cbtn").remove();document.querySelector(".cdr").remove();HC=null}home()})};
+paint();sig=JSON.stringify(hostPl);const t=setInterval(()=>{if(!document.getElementById("tn0")){clearInterval(t);return}const s=JSON.stringify(hostPl);if(s!==sig){sig=s;paint()}},1000)}
+function startOnline(){const a=hostPl.filter(p=>p.team===0),b=hostPl.filter(p=>p.team===1);if(!a.length||a.length!==b.length||a.length>2){alert("لازم الفريقين نفس العدد (لاعب أو اتنين في كل فريق)");return}
+MST={};ACCT={};lastSc=[0,0];streak=[0,0];S={two:a.length===2,round:0,played:[],teams:[a,b].map((arr,i)=>({name:TN[i]||"فريق "+(i+1),players:arr.map(p=>p.name),pids:arr.map(p=>p.id),leader:0,score:0,wins:0}))};LOBBYON=false;hub()}
+async function createRoom(auto,pub){AUTO=auto;PUB=!!pub;ONLINE=true;LOBBYON=true;S=null;TN=["فريق 1","فريق 2"];
+try{const st=pubState();const r=await api({a:"create",state:st});OC=r;lastP=JSON.stringify(st);hostEv=0;hostPl=[];HC=chatUI((k,v)=>api({a:"send",code:OC.code,token:OC.token,body:v,team:-1}).catch(()=>{}),false);hostLoop();lobby()}catch(e){alert("مقدرش أفتح غرفة: "+e.message);ONLINE=false;AUTO=false;LOBBYON=false;OC=null;home()}}
+function newMatch(){if(ONLINE&&OC){LOBBYON=true;MST={};ACCT={};S=null;lobby()}else{ACCT={};MST={};home()}}
+async function cards(){ensureAll();let saved={};
+if(ONLINE&&OC){const items=[];S.teams.forEach((t,i)=>t.players.forEach((n,p)=>items.push({k:pk(i,p),pid:t.pids[p],d:MST[pk(i,p)]})));
+try{const r=await api({a:"saveroom",code:OC.code,token:OC.token,items:items.map(x=>({pid:x.pid,d:x.d}))});items.forEach((x,i)=>{if(r.items[i])saved[x.k]=r.items[i].stats})}catch(e){}}
+else{const items=[],keys=[];Object.keys(ACCT).forEach(k=>{if(MST[k]){keys.push(k);items.push({token:ACCT[k].token,d:MST[k]})}});
+if(items.length){try{const r=await api({a:"savestats",items});keys.forEach((k,i)=>{if(r.items[i])saved[k]=r.items[i].stats})}catch(e){}}}
+let h="";S.teams.forEach((t,i)=>t.players.forEach((n,p)=>{const k=pk(i,p);const st=saved[k]||MST[k];h+=`<div>${cardHTML(n,st,saved[k]?"OVR":"المباراة")}<div class="small">${saved[k]?"✅ اتحفظت في حسابه":"المباراة دي بس"}</div></div>`}));
+const d=document.createElement("div");d.innerHTML=`<h2>🃏 بطاقات اللاعبين</h2><div class="cards">${h}</div>`;app.appendChild(d)}
+/* ----- دخول وصفحة رئيسية ----- */
+function loginPage(cb,guest){R(`<h1>⚽ مارو جيم</h1><div class="card"><h2>👤 دخول اللاعب</h2><input id="au" placeholder="اسم المستخدم" autocomplete="username"><input id="ap" type="password" placeholder="الباسورد (6 حروف أو أكتر)" autocomplete="current-password"><div class="small" id="ae"></div><div class="row"><button id="al">دخول</button><button class="sec" id="ar">حساب جديد</button></div>${guest?'<button class="sec" id="gs">العب كضيف (مباراة محلية بس)</button>':""}</div>`);
+const go=async a=>{try{const r=await api({a,username:document.getElementById("au").value,password:document.getElementById("ap").value});localStorage.setItem("tok",r.token);cb(r)}catch(e){document.getElementById("ae").textContent=e.message}};
+on("al",()=>go("login"));on("ar",()=>go("register"));on("gs",setup)}
+const tabs=t=>`<div class="tabs"><button class="${t==="p"?"on":""}" id="tp">🎮<small>اللعب</small></button><button class="${t==="c"?"on":""}" id="tc">🃏<small>بطاقتي</small></button><button id="tx">🚪<small>خروج</small></button></div>`;
+function bindTabs(me){on("tp",()=>home());on("tc",()=>R(`<h1>🃏 بطاقتي</h1><div class="small">${esc(me.username)} · ${(me.stats&&me.stats.m)||0} مباراة · ${(me.stats&&me.stats.w)||0} فوز</div><div class="cards">${cardHTML(me.username,me.stats||{},"OVR")}</div>${tabs("c")}`)||bindTabs(me));on("tx",()=>{localStorage.removeItem("tok");home()})}
+async function home(){ONLINE=false;AUTO=false;let me=null;const t=TOKEN();if(t){try{me=await api({a:"me",token:t})}catch(e){if(e.message==="auth")localStorage.removeItem("tok")}}
+if(!me)return loginPage(()=>home(),true);
+R(`<div class="hero"><div class="hl">⚽</div><h1>مارو جيم</h1><div class="small">Maro Game</div><div class="small">أهلاً ${esc(me.username)}</div></div><div class="hb"><button class="bb1" id="hq">⚡ انضم بسرعة</button><button class="bb2" id="hj">🔑 انضم لغرفة بالكود</button><button class="bb3" id="hc">➕ إنشاء غرفة</button><button class="bb4" id="hl">📍 مباراة في نفس المكان</button></div>${tabs("p")}`);
+bindTabs(me);
+on("hl",setup);
+on("hj",()=>{R(`<h1>🔑 انضم لغرفة</h1><div class="card"><input id="jc" maxlength="4" placeholder="كود الغرفة (4 حروف)" style="text-align:center;font-size:30px;letter-spacing:8px;text-transform:uppercase;direction:ltr"><div class="small" id="je"></div><button id="jg">انضم</button></div><button class="sec" id="jb">⬅ رجوع</button>`);on("jb",home);on("jg",()=>{const c=document.getElementById("jc").value.trim().toUpperCase();if(c.length<4){document.getElementById("je").textContent="اكتب الكود";return}location.href=location.pathname+"?r="+c})});
+on("hq",async()=>{R(`<h1>⚡ انضم بسرعة</h1><div class="small">غرف عامة مفتوحة دلوقتي</div><div id="rl" class="card"><div class="small">بدور...</div></div><button class="sec" id="rr">🔄 تحديث</button><button class="sec" id="jb">⬅ رجوع</button>`);on("jb",home);on("rr",()=>on_hq());
+const on_hq=async()=>{try{const r=await api({a:"list"});document.getElementById("rl").innerHTML=r.rooms.length?r.rooms.map(x=>`<button class="rm" data-c="${x.code}">${x.auto==="true"?"🤖 بدون حكم":"🧑‍⚖️ بحكم"} · غرفة ${x.code} · ${x.n} لاعب</button>`).join(""):'<div class="small">مفيش غرف عامة. اعمل غرفة بنفسك.</div>';document.querySelectorAll(".rm").forEach(b=>b.onclick=()=>{location.href=location.pathname+"?r="+b.dataset.c})}catch(e){document.getElementById("rl").textContent=e.message}};on_hq()});
+on("hc",()=>{let auto=false,pub=true;
+const paint=()=>{R(`<h1>➕ إنشاء غرفة</h1><div class="card"><div class="small">الحكم</div><div class="seg"><button id="a0" class="${auto?"sec":""}">🧑‍⚖️ حكم (أنا الهوست)</button><button id="a1" class="${auto?"":"sec"}">🤖 بدون حكم</button></div><div class="small">${auto?"تصحيح أوتوماتيك، الكل بيلعب من موبايله. الفقرات المتاحة: ريسك، بنك، الجرس.":"الهوست بيشوف الإجابات ويصحح بنفسه. كل الفقرات."}</div><div class="small" style="margin-top:12px">نوع الغرفة</div><div class="seg"><button id="p1" class="${pub?"":"sec"}">🌍 عامة</button><button id="p0" class="${pub?"sec":""}">🔒 خاصة (بالكود)</button></div></div><button id="cg">▶ افتح الغرفة</button><button class="sec" id="cb">⬅ رجوع</button>`);
+on("a0",()=>{auto=false;paint()});on("a1",()=>{auto=true;paint()});on("p1",()=>{pub=true;paint()});on("p0",()=>{pub=false;paint()});on("cg",()=>createRoom(auto,pub));on("cb",home)};paint()})}
 /* ----- جهاز اللاعب ----- */
-const ONL={boot(){const code=new URLSearchParams(location.search).get("r");if(!code)return setup();document.getElementById("mute").style.display="none";ONL.join(code.toUpperCase())},
-async join(code){
-const saved=JSON.parse(localStorage.getItem("room_"+code)||"null");if(saved)return ONL.play(code,saved.pid);
-R(`<h1>⚽ تحدي الكورة</h1><div class="card"><div class="small">غرفة ${esc(code)}</div><input id="nm" placeholder="اسمك" maxlength="20"><div class="small">اختار فريقك:</div><div class="row"><button class="t0" id="j0">الفريق 1</button><button class="t1" id="j1">الفريق 2</button></div><div class="small" id="er"></div></div>`);
-const go=async t=>{const n=document.getElementById("nm").value.trim();if(!n){document.getElementById("er").textContent="اكتب اسمك";return}try{const r=await api({a:"join",code,name:n,team:t});localStorage.setItem("room_"+code,JSON.stringify({pid:r.pid}));ONL.play(code,r.pid)}catch(e){document.getElementById("er").textContent=e.message==="room"?"الغرفة مش موجودة":e.message}};
-on("j0",()=>go(0));on("j1",()=>go(1))},
-play(code,pid){app.innerHTML=`<div id="pv"></div><div id="bz"></div><div class="card" id="ch"><div id="cl"></div><input id="ci2" placeholder="اكتب رسالة" autocomplete="off"><div class="row"><button class="sec" id="s1">💬 لفريقي</button><button id="s2">✍️ إجابتي للحكم</button></div></div>`;
-let ver=-1,since=0,tm=null,bk=null,pressed=null,lines=[],bmsg="";const pv=document.getElementById("pv");
-const bz=()=>{const b=document.getElementById("bz");b.innerHTML=`<button id="bb" style="height:120px;font-size:26px;width:100%;${bk?"":"opacity:.35"}">🔔 اضغط الجرس</button><div class="small" id="bm">${bmsg}</div>`;
-document.getElementById("bb").onclick=async()=>{if(!bk||pressed===bk)return;pressed=bk;buzz(80);sfx.go();bmsg="...";document.getElementById("bm").textContent=bmsg;try{const r=await api({a:"send",code,pid,kind:"bell",key:bk});bmsg=r.won?"🔔 أنت الأول!":r.late?"متأخر":"سبقك "+(r.winner||"حد");document.getElementById("bm").textContent=bmsg}catch(e){bmsg=e.message;document.getElementById("bm").textContent=bmsg}}};
-const send=async k=>{const i=document.getElementById("ci2");if(!i.value.trim())return;const v=i.value;i.value="";try{await api({a:"send",code,pid,kind:k,body:v})}catch(e){}};
-on("s1",()=>send("chat"));on("s2",()=>send("answer"));document.getElementById("ci2").onkeydown=e=>{if(e.key==="Enter")send("chat")};bz();
-const loop=async()=>{try{const r=await api({a:"poll",code,pid,since,ver});if(r.state){ver=r.ver;const s=r.state;pv.innerHTML=s.html||"";tm=s.tm;if(s.bk!==bk){bk=s.bk;if(bk){sfx.go();bmsg=""}bz()}lastNames=s.names}
-if(tm!=null){const e=pv.querySelector("#tm");if(e)e.textContent=tm}
-for(const e of r.events){since=Math.max(since,Number(e.id));lines.push(`<div class="ev t${e.team<0?2:e.team}"><b>${esc(e.name)}</b>${e.kind==="host"?" 🧑‍⚖️":""}: ${esc(e.body)}</div>`)}
-if(r.events.length){lines=lines.slice(-30);const c=document.getElementById("cl");c.innerHTML=lines.slice(-6).join("");}}catch(e){if(e.message==="auth"){localStorage.removeItem("room_"+code);location.reload();return}}
-setTimeout(loop,1000)};loop()}};
-let lastNames=[];
+async function joinRoom(code){document.getElementById("mute").style.display="none";let me=null;const t=TOKEN();if(t){try{me=await api({a:"me",token:t})}catch(e){}}
+if(!me)return loginPage(()=>joinRoom(code),false);
+try{const r=await api({a:"join",code,token:TOKEN()});playRoom(code,r.pid,me.username)}catch(e){R(`<h1>⚽</h1><div class="card"><div class="big">${e.message==="room"?"الغرفة مش موجودة":esc(e.message)}</div></div><button id="rt">جرّب تاني</button>`);on("rt",()=>joinRoom(code))}}
+function playRoom(code,pid,uname){app.innerHTML=`<div id="pv"></div><div id="aq"></div><div id="bz"></div>`;
+const pv=document.getElementById("pv"),aq=document.getElementById("aq"),bzd=document.getElementById("bz");
+let ver=-1,since=0,bk=null,pressed=null,bmsg="",players=[],st={},ansd=null,lkey="",akey="",vkey="";
+const myT=()=>{const p=players.find(x=>x.id===pid);return p?p.team:-1};
+const cu=chatUI(async(k,v)=>{try{await api({a:"send",code,pid,kind:k,body:v})}catch(e){}},!st.auto);
+const bz=()=>{if(!bk){bzd.innerHTML="";return}bzd.innerHTML=`<button id="bb" style="height:110px;font-size:26px">🔔 اضغط الجرس</button><div class="small" id="bm">${bmsg}</div>`;
+document.getElementById("bb").onclick=async()=>{if(pressed===bk)return;pressed=bk;buzz(80);sfx.go();bmsg="...";document.getElementById("bm").textContent=bmsg;try{const r=await api({a:"send",code,pid,kind:"bell",key:bk});bmsg=r.won?"🔔 أنت الأول!":r.late?"متأخر":"سبقك "+(r.winner||"حد")}catch(e){bmsg=e.message}const m=document.getElementById("bm");if(m)m.textContent=bmsg}};
+const sendA=async v=>{try{await api({a:"send",code,pid,kind:"answer",body:v})}catch(e){}};
+const paintAq=()=>{const q=st.qo,t=myT();const k=JSON.stringify([q&&q.id,t,st.bnk,ansd]);if(k===akey)return;akey=k;let h="";
+if(st.bnk!=null&&st.bnk===t)h+=`<button class="good" id="bkb" style="height:100px;font-size:26px">🏦 بنك</button>`;
+const me=players.find(x=>x.id===pid)||{};const okc=q&&((q.both||q.turn===-1)?t>=0:q.turn===t)&&((q.ph==="clue"||q.ph==="clue2")?(Array.isArray(q.g)?q.g.includes(me.name):me.name===q.g):((q.ph==="guess"||q.ph==="guess2")&&q.g)?(Array.isArray(q.g)?!q.g.includes(me.name):me.name!==q.g):true);
+if(q&&(q.ph==="clue"||q.ph==="clue2")&&(Array.isArray(q.g)?q.g.includes(me.name):me.name===q.g)&&st.gv)h+=`<div class="card"><div class="small">🤫 الكلمة السرية (سرّي!)</div><div class="big">${esc(st.gv)}</div><div class="small">اكتب تلميح من كلمة واحدة تحت</div></div>`;
+if(okc&&ansd!==q.id){if(q.opts)h+=`<div class="card"><div class="small">اختار إجابة فريقك</div>${q.opts.map((o,i)=>`<button class="opt" data-i="${i}"><b>${"أبجد"[i]}</b>${esc(o)}</button>`).join("")}</div>`;else if(q.open)h+=`<div class="card"><input id="oa" placeholder="اكتب إجابتك"><button id="os">أرسل</button></div>`}
+else if(okc&&ansd===q.id)h+=`<div class="small">✔ اتبعتت</div>`;
+if(!st.auto&&!st.lb)h+=`<div class="card"><div class="small">✍️ إجابة فريقك للحكم</div><div class="crow"><input id="ra1" placeholder="اكتب الإجابة" autocomplete="off"><button id="rs1">أرسل</button></div></div>`;
+aq.innerHTML=h;const rs=document.getElementById("rs1");if(rs)rs.onclick=()=>{const i=document.getElementById("ra1");const v=i.value.trim();if(!v)return;i.value="";sendA(v);rs.textContent="✔";setTimeout(()=>{rs.textContent="أرسل"},900)};const b=document.getElementById("bkb");if(b)b.onclick=()=>{sendA("__bank");b.disabled=true};
+aq.querySelectorAll(".opt").forEach(x=>x.onclick=()=>{ansd=q.id;sendA(q.opts[+x.dataset.i]);paintAq()});const o=document.getElementById("os");if(o)o.onclick=()=>{const v=document.getElementById("oa").value.trim();if(!v)return;ansd=q.id;sendA(v);paintAq()}};
+const paintLb=()=>{const k=JSON.stringify([players,st.names]);if(k===lkey)return;lkey=k;pv.innerHTML=lobbyView(players,pid,st.names||TN,true);pv.querySelectorAll(".mv").forEach(b=>b.onclick=async()=>{const t=myT();let n=t;if(b.dataset.d==="L"){n=t===1?-1:t===-1?0:0}else{n=t===0?-1:t===-1?1:1}if(n===t)return;try{await api({a:"setteam",code,pid,team:n});const p=players.find(x=>x.id===pid);if(p)p.team=n;lkey="";paintLb()}catch(e){if(e.message==="full")alert("الفريق ده كمل")}})};
+const loop=async()=>{try{const r=await api({a:"poll",code,pid,since,ver});players=r.players;if(r.state){ver=r.ver;st=r.state;vkey=""}
+if(st.lb){aq.innerHTML="";akey="";bzd.innerHTML="";paintLb()}else{lkey="";if(r.state)pv.innerHTML=st.html||"";const e=pv.querySelector("#tm");if(e&&st.tm!=null)e.textContent=st.tm;if(st.bk!==bk){bk=st.bk;if(bk){sfx.go();bmsg=""}bz()}paintAq();if(st.qo&&st.qo.opts&&st.qo.turn===myT())pv.querySelectorAll(".optv").forEach(x=>x.remove())}
+for(const e of r.events){since=Math.max(since,Number(e.id));cu.add(`<div class="ev t${e.team<0?2:e.team}"><b>${esc(e.name)}</b>${e.kind==="host"?" 🧑‍⚖️":""}: ${esc(e.body)}</div>`)}}catch(e){if(e.message==="auth"){location.reload();return}}
+setTimeout(loop,1000)};loop()}
+function boot(){const code=new URLSearchParams(location.search).get("r");if(!code)return home();joinRoom(code.toUpperCase())}
 
-ONL.boot();
+/* ===== فقرات جديدة v6 ===== */
+let DBLNOW=false,_bt=null;
+function gclock(s,onZero){const set=()=>{const e=document.getElementById("tm");if(e){e.textContent=s;e.className="timer"+(s<=5?" low":"")}};set();stop();timer=setInterval(()=>{s--;set();if(s<=5&&s>0)sfx.tick();if(s<=0){stop();sfx.no();buzz(300);onZero()}},1000)}
+(function(){const _add=add;add=function(t,p){if(DBLNOW)p*=2;_add(t,p)}})();
+/* ---- بيانات القسم المصري (من معلوماتي، الحكم يراجع) ---- */
+const EGQ=[
+["الأهلي المصري","في أي سنة تأسس النادي الأهلي؟","1907",["1911","1920","1898"],1],
+["الأهلي المصري","ما لون قميص الأهلي الأساسي؟","الأحمر",["الأبيض","الأخضر","الأزرق"],1],
+["الأهلي المصري","ما هو الرمز الموجود على شعار الأهلي؟","النسر",["الأسد","الصقر","الجمل"],1],
+["الأهلي المصري","من هو المدرب البرتغالي الشهير الذي قاد الأهلي لألقاب كثيرة؟","مانويل جوزيه",["جوزيه مورينيو","فيتور بيريرا","كارلوس كيروش"],1],
+["الأهلي المصري","ما لقب محمود الخطيب؟","بيبو",["الساحر","الجوكر","العميد"],2],
+["الأهلي المصري","أي لاعب سابق في الأهلي لعب أيضاً مع توتنهام؟","حسام غالي",["محمد زيدان","عماد متعب","محمد بركات"],2],
+["الأهلي المصري","أي نادٍ هو أكثر تتويجاً بدوري أبطال إفريقيا؟","الأهلي",["الزمالك","الترجي","مازيمبي"],1],
+["الأهلي المصري","علي معلول لاعب الأهلي السابق من أي دولة؟","تونس",["المغرب","الجزائر","مصر"],2],
+["الأهلي المصري","مباراة الأهلي والزمالك تُسمى؟","القمة",["الكلاسيكو","الديربي","الأولد فيرم"],1],
+["الأهلي المصري","أي مهاجم مصري سجل كثيراً للأهلي ويلقب بـ«الحاوي»؟","عماد متعب",["أحمد حسام ميدو","عمرو زكي","محمد ناجي جدو"],3],
+["دوري مصري","ما لون قميص الزمالك الأساسي؟","الأبيض",["الأحمر","الأصفر","الأزرق"],1],
+["دوري مصري","النادي المصري ينتمي لأي مدينة؟","بورسعيد",["الإسكندرية","الإسماعيلية","المنصورة"],1],
+["دوري مصري","نادي الإسماعيلي يلقب بـ؟","الدراويش",["النسور","الفراعنة","الشواحن"],2],
+["دوري مصري","أي نادٍ هو الأكثر تتويجاً بالدوري المصري؟","الأهلي",["الزمالك","الإسماعيلي","الاتحاد السكندري"],1],
+["دوري مصري","نادي سموحة ينتمي لأي مدينة؟","الإسكندرية",["بورسعيد","القاهرة","طنطا"],2],
+["دوري مصري","محمد صلاح بدأ مسيرته الاحترافية المحلية في أي نادٍ مصري؟","المقاولون العرب",["الأهلي","الزمالك","إنبي"],2],
+["دوري مصري","النني بدأ مع أي نادٍ مصري قبل أرسنال؟","المقاولون العرب",["الزمالك","بتروجت","الأهلي"],3],
+["دوري مصري","نادي المحلة ينتمي لأي مدينة؟","المحلة الكبرى",["كفر الشيخ","السويس","أسوان"],3],
+["دوري مصري","نادي الاتحاد السكندري ينتمي لأي مدينة؟","الإسكندرية",["بورسعيد","دمياط","الأقصر"],2],
+["دوري مصري","أي لاعب مصري لعب لـ زد؟ (الزمالك) ثم مانشستر سيتي في 2008؟","لا أحد، سؤال خطأ",["ميدو","شيكابالا","زيزو"],3],
+["أساطير","من هو الحارس الوحيد الذي فاز بالكرة الذهبية؟","ليف ياشين",["غيانلويجي بوفون","إيكر كاسياس","أوليفر كان"],2],
+["أساطير","أي لاعب فاز بكأس العالم ثلاث مرات؟","بيليه",["مارادونا","كرويف","زيدان"],1],
+["أساطير","هدف مارادونا الشهير باليد في 1986 يسمى؟","يد الله",["هدف القرن","ضربة الله","المعجزة"],1],
+["أساطير","من الملقب بـ«القيصر» في الكرة الألمانية؟","فرانز بيكنباور",["جيرد مولر","لوثر ماتيوس","أوليفر كان"],2],
+["أساطير","من ضرب ماتيرازي بالرأس في نهائي كأس العالم 2006؟","زين الدين زيدان",["ديديه ديشان","تييري هنري","ليليان تورام"],1],
+["أساطير","أي نجم لُقب بـ«الظاهرة»؟","رونالدو نازاريو",["رونالدينيو","روماريو","ريفالدو"],1],
+["أساطير","من فاز بثلاث كرات ذهبية متتالية 1983 إلى 1985؟","ميشيل بلاتيني",["كرويف","ماركو فان باستن","بيليه"],3],
+["أساطير","من هو «الطائر الهولندي» قائد هولندا في 1974؟","يوهان كرويف",["ماركو فان باستن","رود خوليت","دينيس بيركامب"],2],
+["أساطير","بدأ مارادونا مجده الأوروبي مع أي نادٍ إيطالي؟","نابولي",["ميلان","يوفنتوس","روما"],2],
+["أساطير","أي بلد فاز بكأس العالم 1986 بقيادة مارادونا؟","الأرجنتين",["البرازيل","ألمانيا","إنجلترا"],1]
+].filter(x=>x[2]!=="لا أحد، سؤال خطأ").map(([c,q,a,w,d])=>({k:q,q,c:a,o:sh([a,...w]),d,cat:c}));
+const BDQ=[];BDW.forEach(b=>{if(b.y===2021)return;const d=b.y>=2013?1:2;const oth=BDW.filter(x=>x.y!==b.y).map(x=>x.w);
+BDQ.push({k:"bdw"+b.y,q:`من فاز بالكرة الذهبية ${b.y}؟`,c:b.w,o:sh([b.w,...sh([...new Set(oth)].filter(x=>x!==b.w)).slice(0,3)]),d,cat:"البالون دور"});
+BDQ.push({k:"bds"+b.y,q:`من حلّ ثانياً في سباق الكرة الذهبية ${b.y}؟`,c:b.s,o:sh([b.s,...sh([...new Set(BDW.map(x=>x.s))].filter(x=>x!==b.s)).slice(0,3)]),d:2,cat:"البالون دور"})});
+const tagRx=[["أبطال أوروبا",/دوري أبط/],["كأس العالم",/كأس العالم/],["أمم أفريقيا",/أمم أفري/],["أمم أوروبا",/أمم أورو/],["ملاعب",/^ملعب/],["أندية وبلدان",/يلعب نادي/],["جنسيات",/جنسية/]];
+const RQ=[...EGQ,...BDQ];MCQ.forEach(x=>{if(/الكرة الذهبية/.test(x.q)&&/^من فاز/.test(x.q))return;const t=tagRx.find(r=>r[1].test(x.q));if(t)RQ.push({...x,cat:t[0]})});
+const RCATS=[...new Set(RQ.map(x=>x.cat))].filter(c=>RQ.filter(x=>x.cat===c).length>=4);
+const STK=[5,10,20,40],STD={5:1,10:1,20:2,40:3};
+function rcPick(cat,s){let p=RQ.filter(x=>x.cat===cat&&x.d===STD[s]);if(!p.length)p=RQ.filter(x=>x.cat===cat);return draw(p,x=>x.k)}
+function risk(n,turn,board){const N=8;if(n>=N)return endSeg();
+if(!board){const cs=sh(RCATS).slice(0,6);board=cs.map(c=>({c,u:[]}))}
+R(`${hostTag}<h2>🎲 ريسك (${n+1}/${N})</h2>${scoreBar(turn)}<div class="small">دور ${esc(S.teams[turn].name)} — ${ld(S.teams[turn])} يختار فئة وقيمة. صح +القيمة، غلط -نصفها (لفوق).</div><div class="rb">${board.map((b,i)=>`<div class="rc"><b>${esc(b.c)}</b><button class="sec" id="rf${i}">🔄</button><div class="rs">${STK.map(s=>`<button id="r${i}_${s}" class="${b.u.includes(s)?"sec":"good"}" ${b.u.includes(s)?"disabled":""}>${s}</button>`).join("")}</div></div>`).join("")}</div>`);
+board.forEach((b,i)=>{on("rf"+i,()=>{const cur=board.map(x=>x.c);const o=RCATS.filter(c=>!cur.includes(c));if(o.length){b.c=o[Math.floor(Math.random()*o.length)];b.u=[]}risk(n,turn,board)});
+STK.forEach(s=>on(`r${i}_${s}`,()=>{b.u.push(s);const it=rcPick(b.c,s);mj(it,turn,`${esc(b.c)} — ${s}`,ok=>{add(turn,ok?s:-Math.ceil(s/2));risk(n+1,1-turn,board)},0)}))})}
+/* ×2 */
+function addDbl(){const r=document.getElementById("ok");if(!r||!r.parentNode)return;const b=document.createElement("button");b.className="sec";b.id="dbl";b.textContent="✖2 سؤال مضاعف: لا";b.onclick=()=>{DBLNOW=!DBLNOW;b.textContent="✖2 سؤال مضاعف: "+(DBLNOW?"نعم 🔥":"لا")};r.parentNode.parentNode.insertBefore(b,r.parentNode)}
+const _judge=judge;judge=function(o){DBLNOW=false;const r=o.onRes;o.onRes=(...a)=>{try{r(...a)}finally{DBLNOW=false}};_judge(o);if(!o.nodbl)addDbl()};
+/* ---- بنك: 60 ثانية ---- */
+function bank(n){clearInterval(_bt);if(n>=4)return endSeg();const t=(start()+n)%2;
+R(`${hostTag}<h2>🏦 بنك (${n+1}/4)</h2>${scoreBar(t)}<div class="card"><div class="big">دور ${esc(S.teams[t].name)}: 60 ثانية، أسئلة تتبادلوها بين اللاعبين. كل إجابة صح تزيد السلسلة لكنها ما تتحسبش إلا لو ضغط زميلك "بنك" خلال 4 ثواني. أي غلط أو خلص الوقت يضيّع غير المحفوظ. الفريق التاني يتفرج.</div></div><button id="st">▶ ابدأ الـ60 ثانية</button>`);
+on("st",()=>{let left=60,c=0,qi=0,end=false,wait=null;const tick=()=>{const e=document.getElementById("bt");if(e)e.textContent=left+"s ⏱";if(left<=10&&left>0)sfx.tick()};
+const bar=()=>{app.insertAdjacentHTML("afterbegin",`<div class="timer" id="bt">${left}s ⏱</div>`)};
+_bt=setInterval(()=>{left--;tick();if(left<=0){clearInterval(_bt);end=true;c=0;sfx.no();buzz(300);if(wait){clearTimeout(wait);fin()}}},1000);
+const fin=()=>{clearInterval(_bt);R(`${hostTag}<h2>🏦 انتهى وقت ${esc(S.teams[t].name)}</h2>${scoreBar(t)}<div class="big">السلسلة غير المحفوظة ضاعت</div><button id="nx">التالي</button>`);on("nx",()=>bank(n+1))};
+const q=()=>{if(end)return fin();const pi=qi%S.teams[t].players.length;const it=draw(MCQ.filter(x=>x.d===(qi<3?1:qi<6?2:3)),x=>x.k);
+judge({title:`🏦 بنك — دور ${esc(S.teams[t].players[pi])} · السلسلة ${c}`,turn:t,q:it.q,opts:it.o,ans:it.c,secs:0,streak:0,nodbl:1,onRes:ok=>{if(end)return fin();if(!ok){c=0;qi++;return q()}c+=LAD[Math.min(qi,LAD.length-1)];qi++;
+R(`${hostTag}<h2>🏦 بنك</h2>${scoreBar(t)}<div class="card"><div class="big">السلسلة: <b>${c}</b></div><div class="small">زميله عنده 4 ثواني ليضغط بنك</div></div><button class="good" id="bk" style="height:100px;font-size:24px">🏦 بنك (احفظ ${c})</button><div class="bar"><i id="b4" style="width:100%;transition:width ${ONLINE?7:4}s linear"></i></div>`);BNK=t;bar();setTimeout(()=>{const b=document.getElementById("b4");if(b)b.style.width="0"},50);
+wait=setTimeout(()=>{wait=null;BNK=null;q()},ONLINE?7000:4000);on("bk",()=>{clearTimeout(wait);wait=null;BNK=null;add(t,c);c=0;if(end)return fin();q()})}});app.insertAdjacentHTML("afterbegin",`<div class="timer" id="bt">${left}s ⏱</div>`)};
+q()})}
+/* ---- أحلى عشرة ---- */
+function top10(n){const L=draw(TOP10,x=>x.t);const names=L.l;let got=Array(13).fill(-1),turn=start(),pl=[0,0],pass=[0,0],tl=15;
+const sc=r=>r<10?r+1:-(13-r-1)-0;const pts=r=>r<10?10-r:-(3-(r-10));
+const next=()=>{turn=1-turn};
+const done=()=>got.every(x=>x>=0)||(pass[0]>=3&&pass[1]>=3);
+const paint=()=>{if(done())return fin();R(`${hostTag}<h2>🔟 أحلى عشرة</h2>${scoreBar(turn)}<div class="small">${esc(L.t)}</div><div class="small">دور ${esc(S.teams[turn].name)} — ${esc(S.teams[turn].players[pl[turn]%S.teams[turn].players.length])} · 15 ثانية · تخطي ${pass[turn]}/3</div><div class="timer" id="tm">15</div><div class="t10">${names.map((nm,i)=>`<button id="t${i}" class="${got[i]>=0?"t"+got[i]:"sec"}" ${got[i]>=0?"disabled":""}><b>${i+1}</b> ${got[i]>=0?esc(nm)+" ("+(pts(i)>0?"+":"")+pts(i)+")":`?<span class="reveal hn" style="display:none;background:none;padding:0;margin-inline-start:6px">${esc(nm)}</span>`}</button>`).join("")}</div><button class="bad" id="no">❌ خارج القائمة (صفر ويتخطى)</button><button class="sec" id="hv">👁 أسماء للحكم</button><button class="sec" id="fin">⏹ انتهى</button><button class="sec" id="fl">🚩 سؤال فيه مشكلة</button><div class="small">المصدر: ${esc(L.u)}</div>`);
+if(AUTO){CURQ={id:Date.now(),turn,open:true,t10:names,got};["no","hv","fin"].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display="none"})}
+gclock(15,()=>{pass[turn]++;pl[turn]++;next();paint()});
+on("hv",()=>document.querySelectorAll(".hn").forEach(e=>e.style.display=e.style.display==="none"?"inline":"none")); names.forEach((_,i)=>on("t"+i,()=>{got[i]=turn;add(turn,pts(i));pl[turn]++;next();paint()}));
+on("no",()=>{pass[turn]++;pl[turn]++;next();paint()});on("fin",fin);on("fl",()=>{const f=JSON.parse(localStorage.getItem("flags")||"[]");f.push(L.t);localStorage.setItem("flags",JSON.stringify(f));alert("اتسجل")})};
+const fin=()=>{stop();R(`${hostTag}<h2>🔟 النتيجة</h2>${scoreBar(-1)}<div class="card">${names.map((x,i)=>`<div class="${got[i]>=0?"t"+got[i]:""}">${i+1}. ${esc(x)}</div>`).join("")}</div><button id="nx">التالي</button>`);on("nx",()=>endSeg())};
+paint()}
+/* ---- الحلبة ---- */
+const HP=["لاعب لعب لريال مدريد وبرشلونة","لاعب فاز بكأس العالم","لاعب فاز بالكرة الذهبية","هداف في الدوري الإنجليزي","حارس مرمى مشهور","مدرب فاز بدوري أبطال أوروبا","لاعب مصري محترف في أوروبا","لاعب لعب في الدوري الإيطالي","لاعب لعب لليفربول","لاعب لعب لمانشستر يونايتد","لاعب أفريقي مشهور","مدافع مشهور","لاعب وسط مشهور","لاعب لعب لباريس سان جيرمان","لاعب لعب لبايرن ميونخ","لاعب لعب لتشيلسي","لاعب لعب لأرسنال","لاعب لعب ليوفنتوس","لاعب لعب لميلان","لاعب لعب للأهلي المصري","لاعب لعب للزمالك","لاعب برازيلي","لاعب أرجنتيني","لاعب فرنسي","لاعب إسباني","لاعب ألماني","لاعب إنجليزي","لاعب برتغالي","لاعب هولندي","لاعب عربي مشهور","لاعب شارك في كأس العالم 2022","لاعب سجل هاتريك","لاعب لعب لمانشستر سيتي","لاعب لعب لأتلتيكو مدريد","لاعب لعب لإنتر ميلان","لاعب لعب لتوتنهام","لاعب لعب لدورتموند","لاعب فاز بدوري أبطال أفريقيا","لاعب لعب في الدوري السعودي","لاعب لعب لنابولي أو روما"];
+const HEX={};
+function halba(n,sd){const tot=10;if(!sd&&n>=tot){const[a,b]=S.teams;if(a.score===b.score&&sd!==false)return halba(n,true);return endSeg()}
+const p=draw(HP,x=>x);let tl=10,v=["",""];
+R(`${hostTag}<h2>⚔️ الحلبة ${sd?"(حاسم)":`(${n+1}/${tot})`}</h2>${scoreBar(-1)}<div class="card"><div class="big q">${esc(p)}</div><div class="small">كل فريق يكتب اسم لاعب (القائد يكتب). لو الاسمين نفس الاسم يتصادموا ويتلغوا. الاسم الصح الفريد = نقطة.</div><div class="timer" id="tm">10</div><div class="row">${[0,1].map(i=>`<div><div class="small">${esc(S.teams[i].name)}</div><input type="password" id="v${i}" autocomplete="off" placeholder="اكتب هنا"></div>`).join("")}</div></div><button id="rv2">👁 كشف</button>`);
+let go=false;const reveal=()=>{if(go)return;go=true;stop();v=[0,1].map(i=>document.getElementById("v"+i).value.trim());const nz=s=>s.replace(/[ًٌٍَُِّْ]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/\s+/g," ").toLowerCase();
+const same=v[0]&&nz(v[0])===nz(v[1]);
+R(`${hostTag}<h2>⚔️ الكشف</h2>${scoreBar(-1)}<div class="card"><div class="small">${esc(p)}</div><div class="row">${[0,1].map(i=>`<div class="${same?"crash":"hit"} t${i}"><div class="small">${esc(S.teams[i].name)}</div><div class="big">${esc(v[i]||"—")}</div></div>`).join("")}</div>${same?`<div class="big" style="color:#ff5252">💥 تصادم! الاسمين اتلغوا</div>`:""}</div>${same?"":`<div class="row">${[0,1].map(i=>`<button class="good" id="y${i}" ${v[i]?"":"disabled"}>✅ ${esc(S.teams[i].name)} صح</button>`).join("")}</div>`}<button id="nx">التالي</button>`);
+if(same){sfx.no();buzz([100,50,100])}let fin=false;if(!same)[0,1].forEach(i=>on("y"+i,()=>{if(fin)return;fin=true;add(i,1);document.getElementById("y"+i).disabled=true}));
+on("nx",()=>sd?(S.teams[0].score===S.teams[1].score?halba(n,true):endSeg()):halba(n+1))};
+on("rv2",reveal);gclock(10,reveal)}
+
+function passA(n){const order=passOrder();if(n>=order.length)return endSeg();const [team,pi]=order[n];const T=S.teams[team],O=S.teams[1-team];const solo=T.players.length<2;const giver=solo?O.players[0]:T.players[pi];const po=drawTier(PEOPLE,'pw:'),w=po.n;
+const nxt=()=>{stop();CURQ=null;timer=setInterval(()=>{stop();passA(n+1)},4500)};
+const scr=h=>R(`${hostTag}<h2>🔑 كلمة السر (${n+1}/${order.length})</h2>${scoreBar(team)}${h}`);
+const steal=(clue,reason)=>{if(solo){scr(`<div class="card"><div class="small">${esc(reason)}</div><div class="big">الكلمة كانت: ${esc(w)}</div></div>`);return nxt()}
+scr(`<div class="small">${esc(reason)}</div><div class="card"><div class="chip">💡 ${esc(clue)}</div><div class="timer" id="tm">30</div><div class="big">${esc(O.name)} يكتبوا التخمين على موبايلاتهم</div></div>`);
+CURQ={id:Date.now(),turn:1-team,open:true,ph:"guess",g:null,ans:w,onok:()=>{stop();add(1-team,2);scr(`<div class="card"><div class="big">🎉 ${esc(w)} (+2 ${esc(O.name)})</div></div>`);nxt()}};
+gclock(30,()=>{CURQ=null;scr(`<div class="card"><div class="big">⏰ الكلمة كانت: ${esc(w)}</div></div>`);nxt()})};
+scr(`<div class="card"><div class="big">دور <b>${esc(giver)}</b>. الكلمة ظاهرة على موبايله بس، يكتب تلميح من كلمة واحدة${solo?` وفريق ${esc(T.name)} يخمن`:""}.</div><div class="timer" id="tm">30</div></div>`);
+CURQ={id:Date.now(),turn:solo?1-team:team,open:true,ph:"clue",g:giver,w,onclue:v=>{const bad=badClue(v,w);if(bad==="اكتب التلميح")return;stop();if(bad){CURQ=null;return steal(v.trim(),bad+" — الدور يروح للفريق الثاني")}
+const clue=v.trim();scr(`<div class="card"><div class="chip">💡 ${esc(clue)}</div><div class="timer" id="tm">30</div><div class="big">${esc(T.name)} يكتبوا التخمين على موبايلاتهم</div></div>`);
+CURQ={id:Date.now(),turn:team,open:true,ph:"guess",g:solo?null:giver,ans:w,onok:()=>{stop();add(team,3);scr(`<div class="card"><div class="big">🎉 ${esc(w)} (+3 ${esc(T.name)})</div></div>`);nxt()}};
+gclock(30,()=>steal(clue,"خلص الوقت"))}};
+gclock(30,()=>{CURQ=null;scr(`<div class="card"><div class="big">⏰ مفيش تلميح، الكلمة كانت: ${esc(w)}</div></div>`);nxt()})}
+function halbaA(n,sd){const tot=10;if(!sd&&n>=tot){const[a,b]=S.teams;if(a.score===b.score)return halbaA(n,true);return endSeg()}
+const p=draw(HP,x=>x);const KN=[...PEOPLE.map(x=>x.n),...WHO.map(x=>x.a),...TOP10.flatMap(x=>x.l)];const valid=v=>v&&KN.some(k=>mt(k,v)&&nz(v).length>=3);
+R(`${hostTag}<h2>⚔️ الحلبة ${sd?"(حاسم)":`(${n+1}/${tot})`}</h2>${scoreBar(-1)}<div class="card"><div class="big q">${esc(p)}</div><div class="small">أي لاعب في كل فريق يكتب اسم لاعب على موبايله. أول إجابة من الفريق هي اللي تتحسب. نفس الاسم = تصادم.</div><div class="timer" id="tm">15</div></div>`);
+let done=false;const fin=()=>{if(done)return;done=true;stop();const v=(CURQ&&CURQ.vals)||["",""];CURQ=null;const same=v[0]&&v[1]&&nz(v[0])===nz(v[1]);const ok=[0,1].map(i=>!same&&valid(v[i]));ok.forEach((o,i)=>{if(o)add(i,1)});
+R(`${hostTag}<h2>⚔️ الكشف</h2>${scoreBar(-1)}<div class="card"><div class="small">${esc(p)}</div><div class="row">${[0,1].map(i=>`<div class="t${i}"><div class="small">${esc(S.teams[i].name)}</div><div class="big">${esc(v[i]||"—")}</div><div class="small">${same?"💥 تصادم":ok[i]?"✅ +1":v[i]?"❌ الاسم مش في قائمة اللاعبين":"—"}</div></div>`).join("")}</div></div>`);
+if(same){sfx.no();buzz([100,50,100])}timer=setInterval(()=>{stop();sd?(S.teams[0].score===S.teams[1].score?halbaA(n,true):endSeg()):halbaA(n+1)},5000)};
+CURQ={id:Date.now(),both:true,turn:-1,open:true,vals:["",""],reveal:fin};gclock(15,fin)}
+
+function passB(n){if(n>=4)return endSeg();const po=drawTier(PEOPLE,'pw:'),w=po.n;const kn=S.teams.map(t=>t.players[n%t.players.length]);
+const clues=[null,null],blk=[false,false];
+const nxt=()=>{stop();CURQ=null;timer=setInterval(()=>{stop();passB(n+1)},4500)};
+const scr=(extra)=>R(`${hostTag}<h2>🔑 كلمة السر (${n+1}/4)</h2>${scoreBar(-1)}<div class="card"><div class="small">اللي عارفين الكلمة دلوقتي: <b>${esc(kn[0])}</b> (${esc(S.teams[0].name)}) و <b>${esc(kn[1])}</b> (${esc(S.teams[1].name)}). كل واحد يكتب تلميح من كلمة واحدة لزمايله. التلميحين ظاهرين للكل.</div>${extra}</div>`);
+const clueHtml=()=>[0,1].map(i=>`<div class="chip t${i}">💡 ${esc(S.teams[i].name)}: ${clues[i]===null?"...":blk[i]?"❌ تلميح مخالف":esc(clues[i])}</div>`).join("");
+const guessPhase=()=>{stop();if(!clues.some((c,i)=>c!==null&&!blk[i])){CURQ=null;scr(`<div class="big">مفيش تلميح صالح. الكلمة كانت: ${esc(w)}</div>`);return nxt()}
+scr(`${clueHtml()}<div class="timer" id="tm">30</div><div class="big">باقي اللاعبين يكتبوا التخمين. أول فريق يجاوب صح ياخد +3</div>`);
+CURQ={id:Date.now(),ph:"guess2",open:true,turn:-1,g:kn,blk,ans:w,win:t=>{stop();add(t,3);scr(`${clueHtml()}<div class="big">🎉 ${esc(w)} (+3 ${esc(S.teams[t].name)})</div>`);nxt()}};
+gclock(30,()=>{CURQ=null;scr(`${clueHtml()}<div class="big">⏰ الكلمة كانت: ${esc(w)}</div>`);nxt()})};
+scr(`<div class="timer" id="tm">25</div><div id="cls">${clueHtml()}</div>`);
+const upd=()=>{const c=document.getElementById("cls");if(c)c.innerHTML=clueHtml()};
+CURQ={id:Date.now(),ph:"clue2",open:true,turn:-1,g:kn,w,clues,onclue:(t,v)=>{const bad=badClue(v,w);if(bad==="اكتب التلميح")return;clues[t]=v.trim();if(bad){blk[t]=true;sfx.no()}upd();if(clues[0]!==null&&clues[1]!==null)guessPhase()}};
+gclock(25,guessPhase)}
+/* ---- سكور شيت ---- */
+function sheet(n){const M=draw(LU,x=>x.t);const pl=[];M.teams.forEach((t,ti)=>t.p.forEach(x=>pl.push({n:x[1],pos:x[0],ti,got:-1})));
+let turn=start(),pi=[0,0],strikes={},out={};const key=(t,i)=>t+"_"+i;const who=t=>S.teams[t].players[pi[t]%S.teams[t].players.length];
+const alive=t=>S.teams[t].players.some((_,i)=>(strikes[key(t,i)]||0)<3);
+const nextTurn=()=>{pi[turn]++;let t=1-turn;if(!alive(t))t=turn;turn=t};
+const paint=()=>{if(pl.every(x=>x.got>=0)||(!alive(0)&&!alive(1)))return fin();while(!alive(turn))turn=1-turn;
+R(`${hostTag}<h2>📋 سكور شيت</h2>${scoreBar(turn)}<div class="small">${esc(M.t)}</div><div class="small">دور ${esc(who(turn))} (${esc(S.teams[turn].name)}) · 15 ثانية · أخطاء: ${strikes[key(turn,pi[turn]%S.teams[turn].players.length)]||0}/3</div><div class="timer" id="tm">15</div><div class="sh">${M.teams.map((t,ti)=>`<div><b>${esc(t.n)}</b>${pl.map((x,i)=>x.ti===ti?`<button id="p${i}" class="${x.got>=0?"t"+x.got:"sec"}" ${x.got>=0?"disabled":""}>${x.got>=0?esc(x.n):x.pos+`<span class="reveal hn" style="display:none;background:none;padding:0;margin-inline-start:4px">${esc(x.n)}</span>`}</button>`:"").join("")}</div>`).join("")}</div><button class="sec" id="hv">👁 أسماء للحكم</button><button class="bad" id="st">❌ خطأ / مكرر / خارج الوقت (ضربة)</button><button class="sec" id="fin">⏹ انتهى</button><div class="small">المصدر: ${esc(M.u)}</div>`);
+const strike=()=>{const k=key(turn,pi[turn]%S.teams[turn].players.length);strikes[k]=(strikes[k]||0)+1;sfx.no();nextTurn();paint()};
+gclock(15,strike);on("hv",()=>document.querySelectorAll(".hn").forEach(e=>e.style.display=e.style.display==="none"?"inline":"none"));pl.forEach((x,i)=>on("p"+i,()=>{x.got=turn;add(turn,1);nextTurn();paint()}));on("st",strike);on("fin",fin)};
+const fin=()=>{stop();R(`${hostTag}<h2>📋 النتيجة</h2>${scoreBar(-1)}<div class="card">${M.teams.map((t,ti)=>`<b>${esc(t.n)}</b><div>${pl.filter(x=>x.ti===ti).map(x=>`<span class="chip ${x.got>=0?"t"+x.got:""}">${esc(x.n)}</span>`).join("")}</div>`).join("")}</div><button id="nx">التالي</button>`);on("nx",()=>endSeg())};
+paint()}
+SEGS.push(["top10","🔟","أحلى عشرة","رتب القائمة","#00acc1"],["halba","⚔️","الحلبة","اسم لا يتكرر","#ad1457"],["sheet","📋","سكور شيت","شكّل التشكيلة","#2e7d32"]);
+FN.top10=()=>top10(0);FN.halba=()=>AUTO?halbaA(0):halba(0);FN.pass=()=>AUTO?(S.two?passB(0):passA(0)):pass(0);FN.sheet=()=>sheet(0);
+
+boot();
 </script></body></html>
