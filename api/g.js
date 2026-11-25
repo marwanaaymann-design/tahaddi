@@ -69,13 +69,20 @@ async function act(b) {
     await q('insert into rooms(code,token,state) values($1,$2,$3::jsonb)', [c, token, JSON.stringify(b.state || {})]);
     return { code: c, token };
   }
+  if (a === 'list') {
+    const rows = await q(`select r.code, r.state->>'auto' as auto, (select count(*)::int from players p where p.room=r.code) as n from rooms r where r.state->>'pub'='1' and r.state->>'lb'='true' and r.created > now() - interval '3 hours' order by r.created desc limit 20`);
+    return { rooms: rows };
+  }
   const r = (await q('select token,state,ver from rooms where code=$1', [code]))[0];
   if (!r) return { err: 'room' };
   if (a === 'join') {
-    const name = clip(b.name, 20).trim(); if (!name) return { err: 'name' };
-    const team = b.team === 1 ? 1 : 0, id = rid(12, 'abcdefghijklmnopqrstuvwxyz0123456789');
-    await q('insert into players(id,room,name,team) values($1,$2,$3,$4)', [id, code, name, team]);
-    return { pid: id, state: r.state };
+    const sess = (await q('select username from sessions where token=$1', [clip(b.token, 80)]))[0];
+    if (!sess) return { err: 'لازم تسجل دخول الأول' };
+    const ex = (await q('select id from players where room=$1 and name=$2', [code, sess.username]))[0];
+    if (ex) return { pid: ex.id };
+    const id = rid(12, 'abcdefghijklmnopqrstuvwxyz0123456789');
+    await q('insert into players(id,room,name,team) values($1,$2,$3,-1)', [id, code, sess.username]);
+    return { pid: id };
   }
   const host = b.token && b.token === r.token;
   let me = null;
@@ -88,6 +95,20 @@ async function act(b) {
     await q('update rooms set state=$2::jsonb, ver=ver+1 where code=$1', [code, JSON.stringify(b.state || {})]);
     return { ok: 1 };
   }
+  if (a === 'saveroom') {
+    if (!host) return { err: 'auth' };
+    const out = [];
+    for (const it of (Array.isArray(b.items) ? b.items.slice(0, 4) : [])) {
+      const p = (await q('select name from players where id=$1 and room=$2', [clip(it.pid, 20), code]))[0];
+      const u = p && (await q('select stats from users where username=$1', [p.name]))[0];
+      if (!u) { out.push(null); continue; }
+      const cur = u.stats || {}, d = it.d || {};
+      for (const k of Object.keys(LIM)) cur[k] = (Number(cur[k]) || 0) + Math.max(0, Math.min(LIM[k], Number(d[k]) || 0));
+      await q('update users set stats=$2::jsonb where username=$1', [p.name, JSON.stringify(cur)]);
+      out.push({ username: p.name, stats: cur });
+    }
+    return { items: out };
+  }
   if (a === 'poll') {
     const since = Number(b.since) || 0;
     const players = await q('select id,name,team from players where room=$1 order by joined', [code]);
@@ -97,6 +118,17 @@ async function act(b) {
     const out = { players, events: ev, now: Date.now() };
     if (Number(b.ver) !== Number(r.ver)) { out.state = r.state; out.ver = r.ver; }
     return out;
+  }
+  if (a === 'setteam') {
+    if (host || !me) return { err: 'auth' };
+    const t = Number(b.team);
+    if (![-1, 0, 1].includes(t)) return { err: 'bad' };
+    if (t >= 0) {
+      const c = (await q('select count(*)::int n from players where room=$1 and team=$2 and id<>$3', [code, t, me.id]))[0].n;
+      if (c >= 2) return { err: 'full' };
+    }
+    await q('update players set team=$2 where id=$1', [me.id, t]);
+    return { ok: 1 };
   }
   if (a === 'send') {
     const body = clip(b.body, 300);
