@@ -432,7 +432,7 @@ on("nx",()=>S.teams[w].wins>=3?final():hub())}
 function tie(){const it=draw(GEN,x=>x.k);R(`${hostTag}<h1>تعادل! ⚔️ سؤال حاسم</h1>${scoreBar(-1)}<div class="card"><div class="big q">${esc(it.q)}</div>${revealBox("✔ "+esc(it.a))}</div><div class="row"><button class="t0" id="w0">✅ ${esc(S.teams[0].name)}</button><button class="t1" id="w1">✅ ${esc(S.teams[1].name)}</button></div><button class="sec" id="nw">سؤال جديد (لا أحد أجاب)</button>`);bindReveal();on("w0",()=>endSeg(0));on("w1",()=>endSeg(1));on("nw",tie)}
 function final(){const a=S.teams[0],b=S.teams[1];if(a.wins!==b.wins){const wt=a.wins>b.wins?0:1;ensureAll();S.teams[wt].players.forEach((_,p)=>MST[pk(wt,p)].w=1)}const w=a.wins===b.wins?"تعادل في الفقرات!":(a.wins>b.wins?a:b).name+" بطل المباراة 🏆";R(`<div class="big" style="font-size:90px">🏆</div><h1>النتيجة النهائية</h1>${scoreBar(-1)}<div class="big">${esc(w)}</div><button id="n">مباراة جديدة</button>`);sfx.win();confetti(160);on("n",newMatch);cards()}
 /* ---------- سؤال يحكم عليه الحكم ---------- */
-function judge(o){const t=S.teams[o.turn];let left=o.secs||0,fin=false;
+function judge(o){const t=S.teams[o.turn];let left=o.secs||0,fin=false;if(o.secs)o.ext=k=>{left+=k;o.secs+=k};
 R(`${hostTag}<h2>${o.title}</h2>${scoreBar(o.turn)}<div class="combo">${streak[o.turn]>=2&&o.streak?"🔥 سلسلة "+streak[o.turn]:""}</div><div class="small">دور ${esc(t.name)} — ${ld(t)} يعطي الإجابة النهائية</div>${o.secs?`<div class="bar"><i id="bar" style="width:100%"></i></div>`:""}<div class="card"><div class="big q">${esc(o.q)}</div>${(o.opts||[]).map((x,i)=>`<div class="optv" id="o${i}"><b>${"أبجد"[i]}</b>${esc(x)}</div>`).join("")}</div>${revealBox("✔ "+esc(o.ans))}<div class="row"><button class="good" id="ok">✅ صح</button><button class="bad" id="no">❌ غلط</button></div>`);
 bindReveal();
 const finish=(ok,msg)=>{if(fin)return;fin=true;rec(o.turn,ok,o.secs?o.secs-left:null);stop();streak[o.turn]=ok?streak[o.turn]+1:0;
@@ -440,7 +440,7 @@ const finish=(ok,msg)=>{if(fin)return;fin=true;rec(o.turn,ok,o.secs?o.secs-left:
 const ra=document.getElementById("ra");ra.style.display="block";
 if(ok){sfx.ok();confetti(40);buzz(40)}else{sfx.no();buzz([80,40,80])}
 document.getElementById("ok").remove();document.getElementById("no").remove();
-const n=document.createElement("button");n.textContent=(msg||(ok?"✅ صح":"❌ غلط"))+" — التالي";n.onclick=()=>o.onRes(ok,streak[o.turn]);app.appendChild(n)};
+const n=document.createElement("button");n.textContent=(msg||(ok?"✅ صح":"❌ غلط"))+" — التالي";n.onclick=()=>{if(n.dataset.d)return;n.dataset.d=1;n.disabled=true;o.onRes(ok,streak[o.turn])};app.appendChild(n)};
 on("ok",()=>finish(true));on("no",()=>finish(false));
 if(o.secs)timer=setInterval(()=>{left--;const b=document.getElementById("bar");if(b)b.style.width=(left/o.secs*100)+"%";if(left<=5&&left>0)sfx.tick();if(left<=0)finish(false,"⏰ خلص الوقت")},1000)}
 function mj(it,turn,title,onRes,secs=25){judge({title,turn,q:it.q,opts:it.o,ans:it.c,secs,streak:1,onRes})}
@@ -550,19 +550,20 @@ async function api(b){const r=await fetch(API,{method:"POST",headers:{"Content-T
 const TOKEN=()=>localStorage.getItem("tok");
 const SEGV=()=>SEGS.filter(s=>!(ONLINE&&s[0]==="act")&&!(AUTO&&!["risk","bank","bell","top10","pass","who","halba"].includes(s[0])));
 const snap=()=>{const c=app.cloneNode(true);c.querySelectorAll("button,input,select,textarea,.hostlabel").forEach(e=>e.remove());c.querySelectorAll(".reveal").forEach(e=>{if(e.style.display==="none")e.remove()});return c.innerHTML};
-function pubState(){const tm=document.getElementById("tm");const q=CURQ?{id:CURQ.id,opts:CURQ.opts||null,turn:CURQ.turn,open:!!CURQ.open,g:CURQ.g||null,ph:CURQ.ph||null,both:!!CURQ.both}:null;
-return{html:LOBBYON?"":snap(),lb:LOBBYON,tm:tm?tm.textContent:null,bk:BK,qo:q,bnk:BNK,gv:(CURQ&&(CURQ.ph==="clue"||CURQ.ph==="clue2"))?CURQ.w:null,auto:AUTO,pub:PUB?1:0,names:S?S.teams.map(t=>t.name):TN}}
+function pubState(){const tm=document.getElementById("tm");const q=CURQ?{id:CURQ.id,opts:CURQ.opts||null,turn:CURQ.turn,open:!!CURQ.open,g:CURQ.g||null,ph:CURQ.ph||null,both:!!CURQ.both,rk:CURQ.rk?1:0,stolen:CURQ.stolen?1:0}:null;
+return{html:LOBBYON?"":snap(),lb:LOBBYON,tm:tm?tm.textContent:null,bk:BK,qo:q,bnk:BNK,cards:(CURQ&&CURQ.rk&&RKC)?RKC:null,gv:(CURQ&&(CURQ.ph==="clue"||CURQ.ph==="clue2"))?CURQ.w:null,auto:AUTO,pub:PUB?1:0,names:S?S.teams.map(t=>t.name):TN}}
 const nz=s=>String(s).replace(/[ًٌٍَُِّْ]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/\s+/g," ").trim().toLowerCase();
 const mt=(a,g)=>{a=nz(a);g=nz(g);if(g.length<2)return false;return a===g||a.split(" ").includes(g)||(g.length>=4&&(a.includes(g)||g.includes(a)))};
 function handleAns(e){if(!AUTO||e.kind!=="answer")return;
 if(e.body==="__bank"){if(BNK!=null&&Number(e.team)===BNK){const b=document.getElementById("bk");b&&b.click()}return}
+if(String(e.body).startsWith("__card:")){RKH(Number(e.team),e.body.slice(7));return}
 const q=CURQ;if(!q)return;
 if(q.both){const t=Number(e.team);if(t!==0&&t!==1)return;if(!q.vals[t])q.vals[t]=e.body;if(q.vals[0]&&q.vals[1])q.reveal();return}
 if(q.ph==="clue2"){const t=Number(e.team);if(t!==0&&t!==1||e.name!==q.g[t]||q.clues[t]!==null)return;q.onclue(t,e.body);return}
 if(q.ph==="guess2"){const t=Number(e.team);if(t!==0&&t!==1)return;if(q.g.includes(e.name)||q.blk[t])return;if(mt(q.ans,e.body)){CURQ=null;q.win(t)}else CURQ={...q,id:Date.now()};return}
 if(Number(e.team)!==q.turn)return;
 if(q.ph==="clue"){if(e.name!==q.g)return;q.onclue(e.body);return}
-if(q.ph==="guess"){if(q.g&&e.name===q.g)return;if(mt(q.ans,e.body)){CURQ=null;q.onok()}else CURQ={...q,id:Date.now()};return}
+if(q.ph==="guess"){if(q.g&&e.name===q.g)return;if(mt(q.ans,e.body)){CURQ=null;q.onok(q.tries||0)}else{q.tries=(q.tries||0)+1;if(q.max&&q.tries>=q.max){CURQ=null;q.onfail()}else CURQ={...q,id:Date.now()}}return}
 if(q.t10){const gg=nz(e.body);if(gg.length<2)return;const i=q.t10.findIndex((nm,k)=>q.got[k]<0&&(nz(nm)===gg||nz(nm).split(" ").includes(gg)||(gg.length>=4&&(nz(nm).includes(gg)||gg.includes(nz(nm))))));if(i>=0){CURQ=null;const b=document.getElementById("t"+i);b&&b.click()}else{CURQ={...q,id:Date.now()}}return}
 const a=nz(q.ans),g=nz(e.body);
 const ok=q.opts?e.body===q.ans:(g===a||(a.length>3&&g.includes(a))||(g.length>3&&a.includes(g)));
@@ -586,13 +587,13 @@ setTimeout(hostLoop,1000)}
 function lobbyView(players,me,names,move){const col=t=>players.filter(p=>p.team===t).map(p=>`<div class="pc ${p.id===me?"me":""}">${p.id===me&&move?'<button class="mv" data-d="L">◀</button>':""}<span>${esc(p.name)}</span>${p.id===me&&move?'<button class="mv" data-d="R">▶</button>':""}</div>`).join("")||'<div class="small">—</div>';
 return `<div class="brand">⚽ مارو جيم · Maro Game</div><div class="lby"><div class="lc l0"><h3>${esc(names[0])}</h3>${col(0)}</div><div class="lc mid"><h3>اللاعبين</h3>${col(-1)}</div><div class="lc l1"><h3>${esc(names[1])}</h3>${col(1)}</div></div>`}
 function lobby(){const link=location.origin+location.pathname+"?r="+OC.code;let sig="";
-const paint=()=>{R(`${hostTag}<h1>🌐 غرفة أونلاين</h1><div class="card"><div class="small">كود الغرفة · ${AUTO?"🤖 بدون حكم":"🧑‍⚖️ بحكم"} · ${PUB?"🌍 عامة":"🔒 خاصة"}</div><div class="codes">${[...OC.code].map(c=>`<span>${c}</span>`).join("")}</div><div class="row"><button id="cp" class="sec">📋 نسخ</button><button id="sh" class="sec">📤 مشاركة</button></div></div><div class="row"><input id="tn0" value="${esc(TN[0])}" placeholder="اسم الفريق 1"><input id="tn1" value="${esc(TN[1])}" placeholder="اسم الفريق 2"></div>${lobbyView(hostPl,null,TN,false)}<div class="small">كل لاعب يدخل بحسابه ويختار فريقه بالأسهم (ماكس 2 في الفريق).${AUTO?" وإنت كهوست دوس زرار 🎮 العب معانا تحت واختار فريقك.":""} لازم الفريقين نفس العدد.</div><button id="st">▶ ابدأ المباراة</button><button class="sec" id="bk0">إغلاق الغرفة</button>`);
+const paint=()=>{R(`${hostTag}<h1>🌐 غرفة أونلاين</h1><div class="card"><div class="small">كود الغرفة · ${AUTO?"🤖 بدون حكم":"🧑‍⚖️ بحكم"} · ${PUB?"🌍 عامة":"🔒 خاصة"}</div><div class="codes">${[...OC.code].map(c=>`<span>${c}</span>`).join("")}</div><div class="row"><button id="cp" class="sec">📋 نسخ</button><button id="sh" class="sec">📤 مشاركة</button></div></div><div class="row"><input id="tn0" value="${esc(TN[0])}" placeholder="اسم الفريق 1"><input id="tn1" value="${esc(TN[1])}" placeholder="اسم الفريق 2"></div>${lobbyView(hostPl,null,TN,false)}<div class="small">كل لاعب يدخل بحسابه ويختار فريقه بالأسهم (ماكس 2 في الفريق).${AUTO?" الهوست لاعب كمان: بيتحط في فريق عشوائي وتقدر تغيره من زرار 🎮 العب معانا. وهو مش بيشوف الإجابات.":""} لازم الفريقين نفس العدد.</div><button id="st">▶ ابدأ المباراة</button><button class="sec" id="bk0">إغلاق الغرفة</button>`);
 on("cp",()=>{navigator.clipboard&&navigator.clipboard.writeText(link);alert("اتنسخ")});on("sh",()=>{if(navigator.share)navigator.share({title:"تحدي الكورة",text:"ادخل غرفتي، الكود "+OC.code,url:link});else{navigator.clipboard&&navigator.clipboard.writeText(link);alert("اتنسخ")}});
 ["tn0","tn1"].forEach((id,i)=>{document.getElementById(id).oninput=e=>{TN[i]=e.target.value||"فريق "+(i+1)}});on("st",startOnline);on("bk0",()=>{hpOff();OC=null;ONLINE=false;AUTO=false;LOBBYON=false;if(HC){document.getElementById("cbtn").remove();document.querySelector(".cdr").remove();HC=null}home()})};
 paint();sig=JSON.stringify(hostPl);const t=setInterval(()=>{if(!document.getElementById("tn0")){clearInterval(t);return}const s=JSON.stringify(hostPl);if(s!==sig){sig=s;paint()}},1000)}
 function startOnline(){const a=hostPl.filter(p=>p.team===0),b=hostPl.filter(p=>p.team===1);if(!a.length||a.length!==b.length||a.length>2){alert("لازم الفريقين نفس العدد (لاعب أو اتنين في كل فريق)");return}
 MST={};ACCT={};lastSc=[0,0];streak=[0,0];S={two:a.length===2,round:0,played:[],teams:[a,b].map((arr,i)=>({name:TN[i]||"فريق "+(i+1),players:arr.map(p=>p.name),pids:arr.map(p=>p.id),leader:0,score:0,wins:0}))};LOBBYON=false;hub()}
-function hpOn(){if(document.getElementById("hpb")||!ONLINE||!AUTO||!OC)return;const f=document.createElement("div");f.id="hp";f.style.cssText="position:fixed;inset:0;z-index:9998;background:#2a1458;display:none";f.innerHTML=`<iframe id="hpf" style="width:100%;height:calc(100% - 52px);border:0;position:absolute;top:52px;left:0"></iframe><button id="hpc" style="position:absolute;top:6px;left:8px;right:8px;height:40px;margin:0">⬅ رجوع لشاشة الهوست</button>`;document.body.appendChild(f);const b=document.createElement("button");b.id="hpb";b.textContent="🎮 العب معانا";b.style.cssText="position:fixed;top:62px;left:10px;z-index:9997;font-size:15px;width:auto;padding:10px 16px;margin:0";document.body.appendChild(b);let ld=false;b.onclick=()=>{if(!ld){ld=true;document.getElementById("hpf").src=location.pathname+"?r="+OC.code}f.style.display="block"};document.getElementById("hpc").onclick=()=>{f.style.display="none"}}
+function hpOn(){if(document.getElementById("hpb")||!ONLINE||!AUTO||!OC)return;const f=document.createElement("div");f.id="hp";f.style.cssText="position:fixed;inset:0;z-index:9998;background:#2a1458;display:none";f.innerHTML=`<iframe id="hpf" style="width:100%;height:calc(100% - 52px);border:0;position:absolute;top:52px;left:0"></iframe><button id="hpc" style="position:absolute;top:6px;left:8px;right:8px;height:40px;margin:0">⬅ رجوع لشاشة الهوست</button>`;document.body.appendChild(f);const b=document.createElement("button");b.id="hpb";b.textContent="🎮 العب معانا";b.style.cssText="position:fixed;top:62px;left:10px;z-index:9997;font-size:15px;width:auto;padding:10px 16px;margin:0";document.body.appendChild(b);document.getElementById("hpf").src=location.pathname+"?r="+OC.code+"&h=1";const need=()=>!!(CURQ||BK||BNK);let was=false,man=false;const hc=document.getElementById("hpc");b.onclick=()=>{man=true;f.style.display="block"};hc.onclick=()=>{if(need())return;f.style.display="none";man=false};setInterval(()=>{if(!OC||!document.getElementById("hp"))return;const n=need();if(n){f.style.display="block";hc.style.display="none"}else{hc.style.display="block";if(was&&!man)f.style.display="none"}was=n},250)}
 function hpOff(){["hp","hpb"].forEach(i=>{const e=document.getElementById(i);if(e)e.remove()})}
 async function createRoom(auto,pub){AUTO=auto;PUB=!!pub;ONLINE=true;LOBBYON=true;S=null;TN=["فريق 1","فريق 2"];
 try{const st=pubState();const r=await api({a:"create",state:st});OC=r;lastP=JSON.stringify(st);hostEv=0;hostPl=[];HC=chatUI((k,v)=>api({a:"send",code:OC.code,token:OC.token,body:v,team:-1}).catch(()=>{}),false);hostLoop();hpOn();lobby()}catch(e){alert("مقدرش أفتح غرفة: "+e.message);ONLINE=false;AUTO=false;LOBBYON=false;OC=null;home()}}
@@ -627,22 +628,23 @@ if(!me)return loginPage(()=>joinRoom(code),false);
 try{const r=await api({a:"join",code,token:TOKEN()});playRoom(code,r.pid,me.username)}catch(e){R(`<h1>⚽</h1><div class="card"><div class="big">${e.message==="room"?"الغرفة مش موجودة":esc(e.message)}</div></div><button id="rt">جرّب تاني</button>`);on("rt",()=>joinRoom(code))}}
 function playRoom(code,pid,uname){app.innerHTML=`<div id="pv"></div><div id="aq"></div><div id="bz"></div>`;
 const pv=document.getElementById("pv"),aq=document.getElementById("aq"),bzd=document.getElementById("bz");
-let ver=-1,since=0,bk=null,pressed=null,bmsg="",players=[],st={},ansd=null,lkey="",akey="",vkey="";
+let rnd=false,ver=-1,since=0,bk=null,pressed=null,bmsg="",players=[],st={},ansd=null,lkey="",akey="",vkey="";
 const myT=()=>{const p=players.find(x=>x.id===pid);return p?p.team:-1};
 const cu=chatUI(async(k,v)=>{try{await api({a:"send",code,pid,kind:k,body:v})}catch(e){}},!st.auto);
 const bz=()=>{if(!bk){bzd.innerHTML="";return}bzd.innerHTML=`<button id="bb" style="height:110px;font-size:26px">🔔 اضغط الجرس</button><div class="small" id="bm">${bmsg}</div>`;
 document.getElementById("bb").onclick=async()=>{if(pressed===bk)return;pressed=bk;buzz(80);sfx.go();bmsg="...";document.getElementById("bm").textContent=bmsg;try{const r=await api({a:"send",code,pid,kind:"bell",key:bk});bmsg=r.won?"🔔 أنت الأول!":r.late?"متأخر":"سبقك "+(r.winner||"حد")}catch(e){bmsg=e.message}const m=document.getElementById("bm");if(m)m.textContent=bmsg}};
 const sendA=async v=>{try{await api({a:"send",code,pid,kind:"answer",body:v})}catch(e){}};
-const paintAq=()=>{const q=st.qo,t=myT();const k=JSON.stringify([q&&q.id,t,st.bnk,ansd]);if(k===akey)return;akey=k;let h="";
+const paintAq=()=>{const q=st.qo,t=myT();const k=JSON.stringify([q&&q.id,t,st.bnk,ansd,st.cards,q&&q.stolen]);if(k===akey)return;akey=k;let h="";
 if(st.bnk!=null&&st.bnk===t)h+=`<button class="good" id="bkb" style="height:100px;font-size:26px">🏦 بنك</button>`;
 const me=players.find(x=>x.id===pid)||{};const okc=q&&((q.both||q.turn===-1)?t>=0:q.turn===t)&&((q.ph==="clue"||q.ph==="clue2")?(Array.isArray(q.g)?q.g.includes(me.name):me.name===q.g):((q.ph==="guess"||q.ph==="guess2")&&q.g)?(Array.isArray(q.g)?!q.g.includes(me.name):me.name!==q.g):true);
 if(q&&(q.ph==="clue"||q.ph==="clue2")&&(Array.isArray(q.g)?q.g.includes(me.name):me.name===q.g)&&st.gv)h+=`<div class="card"><div class="small">🤫 الكلمة السرية (سرّي!)</div><div class="big">${esc(st.gv)}</div><div class="small">اكتب تلميح من كلمة واحدة تحت</div></div>`;
 if(okc&&ansd!==q.id){if(q.opts)h+=`<div class="card"><div class="small">اختار إجابة فريقك</div>${q.opts.map((o,i)=>`<button class="opt" data-i="${i}"><b>${"أبجد"[i]}</b>${esc(o)}</button>`).join("")}</div>`;else if(q.open)h+=`<div class="card"><input id="oa" placeholder="اكتب إجابتك"><button id="os">أرسل</button></div>`}
 else if(okc&&ansd===q.id)h+=`<div class="small">✔ اتبعتت</div>`;
+if(q&&q.rk&&st.cards&&t>=0&&st.cards[t]){const cc=st.cards[t];const en=k=>cc[k]&&(k==="steal"?(t!==q.turn&&!q.stolen):k==="time"?t===q.turn:(t===q.turn&&!q.stolen));h+=`<div class="card"><div class="small">🃏 كروتك (مرة واحدة لكل كارت)</div><div class="row">${[["steal","🦹 سرقة السؤال"],["time","⏱ +30 ثانية"],["change","🔄 غيّر السؤال"]].map(([k,l])=>`<button class="sec cdb" data-k="${k}" ${en(k)?"":"disabled"}>${l}</button>`).join("")}</div></div>`}
 if(!st.auto&&!st.lb)h+=`<div class="card"><div class="small">✍️ إجابة فريقك للحكم</div><div class="crow"><input id="ra1" placeholder="اكتب الإجابة" autocomplete="off"><button id="rs1">أرسل</button></div></div>`;
 aq.innerHTML=h;const rs=document.getElementById("rs1");if(rs)rs.onclick=()=>{const i=document.getElementById("ra1");const v=i.value.trim();if(!v)return;i.value="";sendA(v);rs.textContent="✔";setTimeout(()=>{rs.textContent="أرسل"},900)};const b=document.getElementById("bkb");if(b)b.onclick=()=>{sendA("__bank");b.disabled=true};
-aq.querySelectorAll(".opt").forEach(x=>x.onclick=()=>{ansd=q.id;sendA(q.opts[+x.dataset.i]);paintAq()});const o=document.getElementById("os");if(o)o.onclick=()=>{const v=document.getElementById("oa").value.trim();if(!v)return;ansd=q.id;sendA(v);paintAq()}};
-const paintLb=()=>{const k=JSON.stringify([players,st.names]);if(k===lkey)return;lkey=k;pv.innerHTML=lobbyView(players,pid,st.names||TN,true);pv.querySelectorAll(".mv").forEach(b=>b.onclick=async()=>{const t=myT();let n=t;if(b.dataset.d==="L"){n=t===1?-1:t===-1?0:0}else{n=t===0?-1:t===-1?1:1}if(n===t)return;try{await api({a:"setteam",code,pid,team:n});const p=players.find(x=>x.id===pid);if(p)p.team=n;lkey="";paintLb()}catch(e){if(e.message==="full")alert("الفريق ده كمل")}})};
+aq.querySelectorAll(".cdb").forEach(x=>x.onclick=()=>{sendA("__card:"+x.dataset.k);x.disabled=true});aq.querySelectorAll(".opt").forEach(x=>x.onclick=()=>{ansd=q.id;sendA(q.opts[+x.dataset.i]);paintAq()});const o=document.getElementById("os");if(o)o.onclick=()=>{const v=document.getElementById("oa").value.trim();if(!v)return;ansd=q.id;sendA(v);paintAq()}};
+const paintLb=()=>{if(!rnd&&new URLSearchParams(location.search).get("h")&&players.find(x=>x.id===pid)&&myT()===-1){rnd=true;const n=Math.random()<.5?0:1;const set=t=>api({a:"setteam",code,pid,team:t}).then(()=>{const p=players.find(x=>x.id===pid);if(p)p.team=t;lkey="";paintLb()});set(n).catch(()=>set(1-n).catch(()=>{}))}const k=JSON.stringify([players,st.names]);if(k===lkey)return;lkey=k;pv.innerHTML=lobbyView(players,pid,st.names||TN,true);pv.querySelectorAll(".mv").forEach(b=>b.onclick=async()=>{const t=myT();let n=t;if(b.dataset.d==="L"){n=t===1?-1:t===-1?0:0}else{n=t===0?-1:t===-1?1:1}if(n===t)return;try{await api({a:"setteam",code,pid,team:n});const p=players.find(x=>x.id===pid);if(p)p.team=n;lkey="";paintLb()}catch(e){if(e.message==="full")alert("الفريق ده كمل")}})};
 const loop=async()=>{try{const r=await api({a:"poll",code,pid,since,ver});players=r.players;if(r.state){ver=r.ver;st=r.state;vkey=""}
 if(st.lb){aq.innerHTML="";akey="";bzd.innerHTML="";paintLb()}else{lkey="";if(r.state)pv.innerHTML=st.html||"";const e=pv.querySelector("#tm");if(e&&st.tm!=null)e.textContent=st.tm;if(st.bk!==bk){bk=st.bk;if(bk){sfx.go();bmsg=""}bz()}paintAq();if(st.qo&&st.qo.opts&&st.qo.turn===myT())pv.querySelectorAll(".optv").forEach(x=>x.remove())}
 for(const e of r.events){since=Math.max(since,Number(e.id));cu.add(`<div class="ev t${e.team<0?2:e.team}"><b>${esc(e.name)}</b>${e.kind==="host"?" 🧑‍⚖️":""}: ${esc(e.body)}</div>`)}}catch(e){if(e.message==="auth"){location.reload();return}}
@@ -695,10 +697,20 @@ const RCATS=[...new Set(RQ.map(x=>x.cat))].filter(c=>RQ.filter(x=>x.cat===c).len
 const STK=[5,10,20,40],STD={5:1,10:1,20:2,40:3};
 function rcPick(cat,s){let p=RQ.filter(x=>x.cat===cat&&x.d===STD[s]);if(!p.length)p=RQ.filter(x=>x.cat===cat);return draw(p,x=>x.k)}
 function risk(n,turn,board){const N=8;if(n>=N)return endSeg();
-if(!board){const cs=sh(RCATS).slice(0,6);board=cs.map(c=>({c,u:[]}))}
-R(`${hostTag}<h2>🎲 ريسك (${n+1}/${N})</h2>${scoreBar(turn)}<div class="small">دور ${esc(S.teams[turn].name)} — ${ld(S.teams[turn])} يختار فئة وقيمة. صح +القيمة، غلط -نصفها (لفوق).</div><div class="rb">${board.map((b,i)=>`<div class="rc"><b>${esc(b.c)}</b><button class="sec" id="rf${i}">🔄</button><div class="rs">${STK.map(s=>`<button id="r${i}_${s}" class="${b.u.includes(s)?"sec":"good"}" ${b.u.includes(s)?"disabled":""}>${s}</button>`).join("")}</div></div>`).join("")}</div>`);
+if(!board){const cs=sh(RCATS).slice(0,6);board=cs.map(c=>({c,u:[]}));RKC=[0,1].map(()=>({steal:1,time:1,change:1}))}
+R(`${hostTag}<h2>🎲 ريسك (${n+1}/${N})</h2>${scoreBar(turn)}<div class="small">دور ${esc(S.teams[turn].name)} — ${ld(S.teams[turn])} يختار فئة وقيمة. صح +القيمة، غلط -نفس القيمة. معاكم كروت: سرقة السؤال، +30 ثانية، تغيير السؤال.</div><div class="rb">${board.map((b,i)=>`<div class="rc"><b>${esc(b.c)}</b><button class="sec" id="rf${i}">🔄</button><div class="rs">${STK.map(s=>`<button id="r${i}_${s}" class="${b.u.includes(s)?"sec":"good"}" ${b.u.includes(s)?"disabled":""}>${s}</button>`).join("")}</div></div>`).join("")}</div>`);
 board.forEach((b,i)=>{on("rf"+i,()=>{const cur=board.map(x=>x.c);const o=RCATS.filter(c=>!cur.includes(c));if(o.length){b.c=o[Math.floor(Math.random()*o.length)];b.u=[]}risk(n,turn,board)});
-STK.forEach(s=>on(`r${i}_${s}`,()=>{b.u.push(s);const it=rcPick(b.c,s);mj(it,turn,`${esc(b.c)} — ${s}`,ok=>{add(turn,ok?s:-Math.ceil(s/2));risk(n+1,1-turn,board)},0)}))})}
+STK.forEach(s=>on(`r${i}_${s}`,()=>{b.u.push(s);riskAsk(n,turn,board,b,s,rcPick(b.c,s),false)}))})}
+let RKC=null,RKQ=null;
+const RKOK=(t,k)=>{if(!RKQ||!RKC||!RKC[t]||!RKC[t][k])return false;if(k==="steal")return t!==RKQ.turn&&!RKQ.stolen;if(k==="time")return t===RKQ.turn;return t===RKQ.turn&&!RKQ.stolen};
+function rkPaint(){const d=document.getElementById("cds");if(!d)return;d.innerHTML=[0,1].map(t=>`<div class="small">🃏 كروت ${esc(S.teams[t].name)}</div><div class="row">${["steal","time","change"].map((k,i)=>`<button class="sec" id="cd${t}${k}" ${RKOK(t,k)?"":"disabled"}>${["🦹 سرقة","⏱ +30","🔄 غيّر"][i]}</button>`).join("")}</div>`).join("");[0,1].forEach(t=>["steal","time","change"].forEach(k=>on("cd"+t+k,()=>RKH(t,k))))}
+function RKH(t,k){if(!RKQ||!document.getElementById("ok")||!RKOK(t,k))return;RKC[t][k]=0;const q=RKQ;
+if(k==="time"){q.o.ext&&q.o.ext(30);rkPaint();return}
+stop();if(k==="steal")riskAsk(q.n,q.orig,q.board,q.b,q.s,q.it,true);else riskAsk(q.n,q.orig,q.board,q.b,q.s,rcPick(q.b.c,q.s),false)}
+function riskAsk(n,turn,board,b,s,it,stolen){const tt=stolen?1-turn:turn;
+const o={title:`${esc(b.c)} — ${s}${stolen?" 🦹 مسروق":""}`,turn:tt,q:it.q,opts:it.o,ans:it.c,secs:30,streak:1,onRes:ok=>{RKQ=null;add(tt,ok?s:-s);risk(n+1,1-turn,board)}};
+judge(o);RKQ={n,orig:turn,board,b,s,it,stolen,turn:tt,o};if(AUTO&&CURQ){CURQ.rk=1;CURQ.stolen=!!stolen}
+const ok=document.getElementById("ok");if(ok){const d=document.createElement("div");d.id="cds";ok.parentNode.parentNode.insertBefore(d,ok.parentNode);rkPaint()}}
 /* ×2 */
 function addDbl(){const r=document.getElementById("ok");if(!r||!r.parentNode)return;const b=document.createElement("button");b.className="sec";b.id="dbl";b.textContent="✖2 سؤال مضاعف: لا";b.onclick=()=>{DBLNOW=!DBLNOW;b.textContent="✖2 سؤال مضاعف: "+(DBLNOW?"نعم 🔥":"لا")};r.parentNode.parentNode.insertBefore(b,r.parentNode)}
 const _judge=judge;judge=function(o){DBLNOW=false;const r=o.onRes;o.onRes=(...a)=>{try{r(...a)}finally{DBLNOW=false}};_judge(o);if(!o.nodbl)addDbl()};
@@ -773,6 +785,16 @@ scr(`<div class="timer" id="tm">25</div><div id="cls">${clueHtml()}</div>`);
 const upd=()=>{const c=document.getElementById("cls");if(c)c.innerHTML=clueHtml()};
 CURQ={id:Date.now(),ph:"clue2",open:true,turn:-1,g:kn,w,clues,onclue:(t,v)=>{const bad=badClue(v,w);if(bad==="اكتب التلميح")return;clues[t]=v.trim();if(bad){blk[t]=true;sfx.no()}upd();if(clues[0]!==null&&clues[1]!==null)guessPhase()}};
 gclock(25,guessPhase)}
+function passC(n){if(n>=4)return endSeg();const a=n%2,g=1-a;const D=S.teams[a],G=S.teams[g];const dn=D.players[0];const po=drawTier(PEOPLE,'pw:'),w=po.n;
+const nxt=()=>{stop();CURQ=null;timer=setInterval(()=>{stop();passC(n+1)},4500)};
+const scr=h=>R(`${hostTag}<h2>🔑 كلمة السر 1ضد1 (${n+1}/4)</h2>${scoreBar(-1)}${h}`);
+scr(`<div class="card"><div class="big">دور <b>${esc(dn)}</b> يوصف. الكلمة ظاهرة على موبايله بس، يكتب تلميح من كلمة واحدة (من غير الاسم نفسه). ${esc(G.players[0])} هيخمن وعنده محاولتين.</div><div class="small">تخمين صح من أول محاولة +3، من التانية +2، والواصف ياخد +1. خلص الوقت أو المحاولتين = صفر.</div><div class="timer" id="tm">30</div></div>`);
+CURQ={id:Date.now(),turn:a,open:true,ph:"clue",g:dn,w,onclue:v=>{const bad=badClue(v,w);if(bad==="اكتب التلميح")return;stop();if(bad){CURQ=null;add(g,1);scr(`<div class="card"><div class="small">${esc(bad)}</div><div class="big">التلميح مخالف. +1 لـ ${esc(G.name)}. الكلمة: ${esc(w)}</div></div>`);return nxt()}
+const clue=v.trim();scr(`<div class="card"><div class="chip">💡 ${esc(clue)}</div><div class="timer" id="tm">30</div><div class="big">${esc(G.players[0])} يخمن (محاولتين)</div></div>`);
+const fail=()=>{stop();CURQ=null;scr(`<div class="card"><div class="chip">💡 ${esc(clue)}</div><div class="big">❌ الكلمة كانت: ${esc(w)}</div></div>`);nxt()};
+CURQ={id:Date.now(),turn:g,open:true,ph:"guess",g:null,ans:w,max:2,tries:0,onfail:fail,onok:tr=>{stop();const t2=tr===0?3:2;add(g,t2);add(a,1);scr(`<div class="card"><div class="big">🎉 ${esc(w)} (+${t2} ${esc(G.name)} و +1 ${esc(D.name)})</div></div>`);nxt()}};
+gclock(30,fail)}};
+gclock(30,()=>{CURQ=null;scr(`<div class="card"><div class="big">⏰ مفيش تلميح، الكلمة كانت: ${esc(w)}</div></div>`);nxt()})}
 /* ---- سكور شيت ---- */
 function sheet(n){const M=draw(LU,x=>x.t);const pl=[];M.teams.forEach((t,ti)=>t.p.forEach(x=>pl.push({n:x[1],pos:x[0],ti,got:-1})));
 let turn=start(),pi=[0,0],strikes={},out={};const key=(t,i)=>t+"_"+i;const who=t=>S.teams[t].players[pi[t]%S.teams[t].players.length];
@@ -785,7 +807,7 @@ gclock(15,strike);on("hv",()=>document.querySelectorAll(".hn").forEach(e=>e.styl
 const fin=()=>{stop();R(`${hostTag}<h2>📋 النتيجة</h2>${scoreBar(-1)}<div class="card">${M.teams.map((t,ti)=>`<b>${esc(t.n)}</b><div>${pl.filter(x=>x.ti===ti).map(x=>`<span class="chip ${x.got>=0?"t"+x.got:""}">${esc(x.n)}</span>`).join("")}</div>`).join("")}</div><button id="nx">التالي</button>`);on("nx",()=>endSeg())};
 paint()}
 SEGS.push(["top10","🔟","أحلى عشرة","رتب القائمة","#00acc1"],["halba","⚔️","الحلبة","اسم لا يتكرر","#ad1457"],["sheet","📋","سكور شيت","شكّل التشكيلة","#2e7d32"]);
-FN.top10=()=>top10(0);FN.halba=()=>AUTO?halbaA(0):halba(0);FN.pass=()=>AUTO?(S.two?passB(0):passA(0)):pass(0);FN.sheet=()=>sheet(0);
+FN.top10=()=>top10(0);FN.halba=()=>AUTO?halbaA(0):halba(0);FN.pass=()=>AUTO?(S.two?passB(0):passC(0)):pass(0);FN.sheet=()=>sheet(0);
 
 boot();
 </script></body></html>
