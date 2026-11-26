@@ -13,6 +13,9 @@ async function init() {
     await q(`create table if not exists events(id bigserial primary key, room text not null, kind text not null, pid text, name text, team int, body text, bellkey text, ts timestamptz not null default clock_timestamp())`);
     await q(`create table if not exists users(username text primary key, salt text not null, hash text not null, stats jsonb not null default '{}'::jsonb, created timestamptz not null default now())`);
     await q(`create table if not exists sessions(token text primary key, username text not null, created timestamptz not null default now())`);
+    await q(`create table if not exists memo(username text primary key, data jsonb not null default '{}'::jsonb, updated timestamptz)`);
+    await q(`alter table users add column if not exists av text`);
+    await q(`alter table users add column if not exists avv int not null default 0`);
     await q(`create index if not exists ev_room on events(room, id)`);
     await q(`create unique index if not exists ev_bell on events(room, bellkey) where kind = 'bell'`);
   })();
@@ -43,7 +46,15 @@ async function account(b) {
     return { username: u, token, stats: st };
   }
   const who = async t => (await q('select username from sessions where token=$1', [clip(t, 80)]))[0];
-  if (a === 'me') { const s = await who(b.token); if (!s) return { err: 'auth' }; return { username: s.username, stats: (await q('select stats from users where username=$1', [s.username]))[0].stats }; }
+  if (a === 'me') { const s = await who(b.token); if (!s) return { err: 'auth' }; const ur = (await q('select stats,av,avv from users where username=$1', [s.username]))[0]; return { username: s.username, stats: ur.stats, av: ur.av || '', avv: ur.avv || 0 }; }
+  if (a === 'setavatar') {
+    const s = await who(b.token); if (!s) return { err: 'auth' };
+    const d = clip(b.data, 14001);
+    if (d && !/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(d)) return { err: 'bad' };
+    if (d.length > 14000) return { err: 'big' };
+    const r = (await q('update users set av=$2, avv=avv+1 where username=$1 returning avv', [s.username, d]))[0];
+    return { ok: 1, avv: r ? r.avv : 0 };
+  }
   if (a === 'savestats') {
     const out = [];
     for (const it of (Array.isArray(b.items) ? b.items.slice(0, 4) : [])) {
@@ -56,10 +67,26 @@ async function account(b) {
     }
     return { items: out };
   }
+  if (a === 'memoGet' || a === 'memoSet') {
+    const s = await who(b.token); if (!s) return { err: 'auth' };
+    if (a === 'memoGet') {
+      const r = (await q('select data from memo where username=$1', [s.username]))[0];
+      return { data: r ? r.data : {} };
+    }
+    const d = b.data;
+    if (!d || typeof d !== 'object' || Array.isArray(d)) return { err: 'bad' };
+    for (const k of Object.keys(d)) {
+      if (k.length > 80 || !Array.isArray(d[k]) || d[k].some(x => !(typeof x === 'string' ? x.length <= 80 : Number.isFinite(x)))) return { err: 'bad' };
+    }
+    const js = JSON.stringify(d);
+    if (Buffer.byteLength(js) > 200 * 1024) return { err: 'big' };
+    await q('insert into memo(username,data,updated) values($1,$2::jsonb,now()) on conflict (username) do update set data=excluded.data, updated=now()', [s.username, js]);
+    return { ok: 1 };
+  }
   return null;
 }
 async function act(b) {
-  if (['register','login','me','savestats'].includes(b.a)) return await account(b);
+  if (['register','login','me','savestats','memoGet','memoSet','setavatar'].includes(b.a)) return await account(b);
   const a = b.a, code = clip(b.code, 8).toUpperCase();
   if (a === 'create') {
     await q(`delete from events where room in (select code from rooms where created < now() - interval '1 day')`);
@@ -111,7 +138,7 @@ async function act(b) {
   }
   if (a === 'poll') {
     const since = Number(b.since) || 0;
-    const players = await q('select id,name,team from players where room=$1 order by joined', [code]);
+    const players = await q('select p.id,p.name,p.team,coalesce(u.avv,0) as avv from players p left join users u on u.username=p.name where p.room=$1 order by p.joined', [code]);
     const ev = host
       ? await q('select id,kind,name,team,body,bellkey from events where room=$1 and id>$2::bigint order by id limit 100', [code, since])
       : await q(`select id,kind,name,team,body from events where room=$1 and id>$2::bigint and kind in ('chat','host') and (team=$3 or team=-1) order by id limit 50`, [code, since, me.team]);
@@ -119,13 +146,20 @@ async function act(b) {
     if (Number(b.ver) !== Number(r.ver)) { out.state = r.state; out.ver = r.ver; }
     return out;
   }
+  if (a === 'getav') {
+    const names = (Array.isArray(b.names) ? b.names : []).slice(0, 20).map(x => clip(x, 40));
+    const rows = names.length ? await q('select p.name,u.av,u.avv from players p join users u on u.username=p.name where p.room=$1 and p.name = any($2::text[])', [code, names]) : [];
+    const map = {};
+    for (const x of rows) map[x.name] = { av: x.av || '', avv: x.avv || 0 };
+    return { map };
+  }
   if (a === 'setteam') {
     if (host || !me) return { err: 'auth' };
     const t = Number(b.team);
     if (![-1, 0, 1].includes(t)) return { err: 'bad' };
     if (t >= 0) {
       const c = (await q('select count(*)::int n from players where room=$1 and team=$2 and id<>$3', [code, t, me.id]))[0].n;
-      if (c >= 2) return { err: 'full' };
+      if (c >= 10) return { err: 'full' };
     }
     await q('update players set team=$2 where id=$1', [me.id, t]);
     return { ok: 1 };
